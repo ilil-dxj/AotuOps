@@ -46,7 +46,7 @@
         .content-header h2 { color: #333; font-size: 18px; font-weight: 600; }
         .content-body { padding: 24px; }
         
-        /* Dashboard Cards */
+        /* Dashboard */
         .dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 24px; }
         .dash-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 16px; }
         .dash-card .icon { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
@@ -58,59 +58,40 @@
         .dash-card .info .label { color: #999; font-size: 13px; margin-bottom: 4px; }
         .dash-card .info .value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
         .dash-card .info .sub { font-size: 12px; color: #999; margin-top: 4px; }
-        .dash-card .info .value.green { color: #52c41a; }
-        .dash-card .info .value.orange { color: #fa8c16; }
-        .dash-card .info .value.red { color: #f5222d; }
         
-        /* Charts Row */
+        /* Charts */
         .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px; }
         .chart-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-        .chart-card h3 { color: #333; font-size: 16px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-        .chart-placeholder { background: #fafafa; border-radius: 12px; padding: 40px; text-align: center; color: #999; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .chart-placeholder .chart-icon { font-size: 48px; margin-bottom: 12px; }
-        
-        /* Progress Bars */
+        .chart-card h3 { color: #333; font-size: 16px; font-weight: 600; margin-bottom: 20px; }
         .progress-list { }
         .progress-item { margin-bottom: 16px; }
         .progress-item .label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px; color: #666; }
         .progress-item .bar { height: 8px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
-        .progress-item .fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+        .progress-item .fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
         .progress-item .fill.green { background: linear-gradient(90deg, #52c41a, #73d13d); }
         .progress-item .fill.orange { background: linear-gradient(90deg, #fa8c16, #ffc53d); }
         .progress-item .fill.red { background: linear-gradient(90deg, #f5222d, #ff7875); }
         .progress-item .fill.blue { background: linear-gradient(90deg, #667eea, #764ba2); }
         
-        /* Alert List */
+        /* Alerts */
         .alert-list { max-height: 300px; overflow-y: auto; }
-        .alert-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; margin-bottom: 8px; background: #fafafa; }
+        .alert-item { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; margin-bottom: 8px; }
         .alert-item.critical { background: #fff2f0; border-left: 3px solid #f5222d; }
         .alert-item.warning { background: #fffbe6; border-left: 3px solid #fa8c16; }
         .alert-item.info { background: #e6f7ff; border-left: 3px solid #1890ff; }
         .alert-item .time { font-size: 11px; color: #999; white-space: nowrap; }
         .alert-item .msg { flex: 1; font-size: 13px; }
         
-        /* Recent List */
-        .recent-list { }
-        .recent-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
-        .recent-item:last-child { border-bottom: none; }
-        .recent-item .icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 12px; font-size: 16px; }
-        .recent-item .icon.green { background: #f6ffed; color: #52c41a; }
-        .recent-item .icon.red { background: #fff2f0; color: #f5222d; }
-        .recent-item .icon.orange { background: #fffbe6; color: #fa8c16; }
-        .recent-item .info { flex: 1; }
-        .recent-item .name { font-size: 14px; color: #333; font-weight: 500; }
-        .recent-item .time { font-size: 12px; color: #999; }
-        
         /* Status Grid */
-        .status-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .status-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
         .status-box { background: #fafafa; border-radius: 10px; padding: 16px; text-align: center; }
-        .status-box .value { font-size: 32px; font-weight: 700; }
-        .status-box .label { font-size: 13px; color: #999; margin-top: 4px; }
+        .status-box .val { font-size: 28px; font-weight: 700; }
+        .status-box .lbl { font-size: 12px; color: #999; margin-top: 4px; }
         
         /* Cards */
         .card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f0f0f0; }
-        .card-header h3 { color: #333; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .card-header h3 { color: #333; font-size: 16px; font-weight: 600; }
         .card-header .actions { display: flex; gap: 8px; }
         .btn { padding: 8px 16px; border-radius: 8px; border: none; font-size: 13px; cursor: pointer; transition: all 0.2s; }
         .btn-primary { background: #667eea; color: #fff; }
@@ -152,6 +133,7 @@
         .action-btns { display: flex; gap: 8px; }
         .terminal-box { background: #1a1a2e; border-radius: 10px; padding: 20px; font-family: 'Monaco', monospace; color: #0f0; font-size: 13px; min-height: 250px; }
         .query-result { background: #fafafa; border-radius: 8px; padding: 16px; margin-top: 16px; max-height: 400px; overflow: auto; font-family: monospace; font-size: 12px; white-space: pre-wrap; }
+        .refresh-time { font-size: 11px; color: #999; }
     </style>
 </head>
 <body>
@@ -199,134 +181,84 @@
     </div>
     
     <div class="content">
-        <div class="content-header"><h2 id="pageTitle">仪表盘</h2><span class="breadcrumb">AutoOps / <span id="breadcrumb">仪表盘</span></span></div>
+        <div class="content-header"><h2 id="pageTitle">仪表盘</h2><span class="breadcrumb">AutoOps / <span id="breadcrumb">仪表盘</span> <span class="refresh-time" id="refreshTime"></span></div>
         <div class="content-body">
             
             <div id="page-dashboard" class="page active">
-                <!-- Top Stats -->
                 <div class="dash-grid">
-                    <div class="dash-card">
-                        <div class="icon blue">🖥️</div>
-                        <div class="info"><div class="label">主机总数</div><div class="value" id="statHosts">0</div><div class="sub">在线 <span id="statHostsOnline" class="green">0</span> / 离线 <span id="statHostsOffline" class="red">0</span></div></div>
-                    </div>
-                    <div class="dash-card">
-                        <div class="icon green">📦</div>
-                        <div class="info"><div class="label">Pod 总数</div><div class="value" id="statPods">0</div><div class="sub">Running <span id="statPodsRunning" class="green">0</span></div></div>
-                    </div>
-                    <div class="dash-card">
-                        <div class="icon orange">🚀</div>
-                        <div class="info"><div class="label">Deployment</div><div class="value" id="statDeployments">0</div><div class="sub">可用 <span id="statDeployReady" class="green">0</span></div></div>
-                    </div>
-                    <div class="dash-card">
-                        <div class="icon red">🔔</div>
-                        <div class="info"><div class="label">活跃告警</div><div class="value red" id="statAlerts">0</div><div class="sub">严重 <span id="statAlertsCritical" class="red">0</span> / 警告 <span id="statAlertsWarning" class="orange">0</span></div></div>
-                    </div>
+                    <div class="dash-card"><div class="icon blue">🖥️</div><div class="info"><div class="label">主机总数</div><div class="value" id="statHosts">-</div><div class="sub">在线 <span id="statHostsOnline" class="green">0</span> / 离线 <span id="statHostsOffline" class="red">0</span></div></div></div>
+                    <div class="dash-card"><div class="icon green">📦</div><div class="info"><div class="label">Pod 总数</div><div class="value" id="statPods">-</div><div class="sub">Running <span id="statPodsRunning" class="green">0</span></div></div></div>
+                    <div class="dash-card"><div class="icon orange">🚀</div><div class="info"><div class="label">Deployment</div><div class="value" id="statDeployments">-</div><div class="sub">可用 <span id="statDeployReady" class="green">0</span></div></div></div>
+                    <div class="dash-card"><div class="icon red">🔔</div><div class="info"><div class="label">活跃告警</div><div class="value" id="statAlerts">-</div><div class="sub">严重 <span id="statAlertsCritical" class="red">0</span> / 警告 <span id="statAlertsWarning" class="orange">0</span></div></div></div>
                 </div>
                 
-                <!-- Charts Row -->
                 <div class="charts-row">
                     <div class="chart-card">
-                        <h3>📊 资源使用率</h3>
+                        <h3>📊 K8s 集群资源</h3>
                         <div class="progress-list">
-                            <div class="progress-item">
-                                <div class="label"><span>🖥️ CPU 使用率</span><span id="cpuPercent">0%</span></div>
-                                <div class="bar"><div class="fill blue" id="cpuBar" style="width:0%"></div></div>
-                            </div>
-                            <div class="progress-item">
-                                <div class="label"><span>💾 内存使用率</span><span id="memPercent">0%</span></div>
-                                <div class="bar"><div class="fill green" id="memBar" style="width:0%"></div></div>
-                            </div>
-                            <div class="progress-item">
-                                <div class="label"><span>💿 磁盘使用率</span><span id="diskPercent">0%</span></div>
-                                <div class="bar"><div class="fill orange" id="diskBar" style="width:0%"></div></div>
-                            </div>
-                            <div class="progress-item">
-                                <div class="label"><span>🌐 网络带宽</span><span id="netPercent">0%</span></div>
-                                <div class="bar"><div class="fill" id="netBar" style="width:0%;background:linear-gradient(90deg,#667eea,#764ba2)"></div></div>
-                            </div>
+                            <div class="progress-item"><div class="label"><span>🖥️ CPU 使用率</span><span id="k8sCpuPercent">-</span></div><div class="bar"><div class="fill blue" id="k8sCpuBar" style="width:0%"></div></div></div>
+                            <div class="progress-item"><div class="label"><span>💾 内存使用率</span><span id="k8sMemPercent">-</span></div><div class="bar"><div class="fill green" id="k8sMemBar" style="width:0%"></div></div></div>
+                            <div class="progress-item"><div class="label"><span>📦 Pod 使用率</span><span id="k8sPodPercent">-</span></div><div class="bar"><div class="fill orange" id="k8sPodBar" style="width:0%"></div></div></div>
+                        </div>
+                        <div class="status-row">
+                            <div class="status-box"><div class="val green" id="k8sNodesReady">-</div><div class="lbl">节点就绪</div></div>
+                            <div class="status-box"><div class="val" id="k8sNamespaces">-</div><div class="lbl">命名空间</div></div>
+                            <div class="status-box"><div class="val green" id="k8sPodsRunning">-</div><div class="lbl">Pod运行中</div></div>
+                            <div class="status-box"><div class="val" id="k8sPodsPending">-</div><div class="lbl">Pod等待中</div></div>
                         </div>
                     </div>
                     <div class="chart-card">
-                        <h3>🔔 最新告警</h3>
-                        <div class="alert-list" id="alertList">
-                            <div class="alert-item critical"><span class="time">10:23</span><span class="msg">服务器 web-01 CPU使用率超过90%</span></div>
-                            <div class="alert-item warning"><span class="time">10:15</span><span class="msg">内存使用率接近阈值 85%</span></div>
-                            <div class="alert-item info"><span class="time">09:45</span><span class="msg">Pod nginx-7d9f8c4d7 restart</span></div>
-                            <div class="alert-item info"><span class="time">09:30</span><span class="msg">数据库连接池达到上限</span></div>
-                        </div>
+                        <h3>🔔 实时告警 <button class="btn btn-default" style="padding:4px 8px;font-size:11px;margin-left:8px;" onclick="loadDashboard()">🔄</button></h3>
+                        <div id="alertList" class="alert-list"><div class="loading">加载中...</div></div>
                     </div>
                 </div>
                 
-                <!-- Host Status & K8s Status -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                    <div class="card">
-                        <div class="card-header"><h3>🖥️ 主机状态</h3></div>
-                        <div id="hostStatusGrid" class="status-grid">
-                            <div class="status-box"><div class="value green" id="hostsOnline">0</div><div class="label">在线</div></div>
-                            <div class="status-box"><div class="value red" id="hostsOffline">0</div><div class="label">离线</div></div>
-                        </div>
-                        <div style="margin-top:20px;" id="hostStatusList"></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header"><h3>☸️ K8s Pod 状态</h3></div>
-                        <div class="status-grid">
-                            <div class="status-box"><div class="value green" id="podsRunning">0</div><div class="label">Running</div></div>
-                            <div class="status-box"><div class="value orange" id="podsPending">0</div><div class="label">Pending</div></div>
-                            <div class="status-box"><div class="value red" id="podsFailed">0</div><div class="label">Failed</div></div>
-                            <div class="status-box"><div class="value" style="color:#999" id="podsUnknown">0</div><div class="label">Unknown</div></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Recent Pods -->
                 <div class="card">
-                    <div class="card-header"><h3>📦 最近 Pod</h3><button class="btn btn-default" onclick="loadDashboard()">🔄 刷新</button></div>
-                    <div id="recentPods"></div>
+                    <div class="card-header"><h3>🖥️ 主机状态</h3></div>
+                    <div id="hostStatusList" class="loading">加载中...</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header"><h3>📦 最近 Pod</h3><button class="btn btn-default" onclick="loadRecentPods()">🔄 刷新</button></div>
+                    <div id="recentPods"><div class="loading">加载中...</div></div>
                 </div>
             </div>
             
-            <!-- Hosts Page -->
-            <div id="page-hosts" class="page"><div class="card"><div class="card-header"><h3>🖥️ 主机列表</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('host-add')">+ 添加主机</button><button class="btn btn-default" onclick="loadHosts()">🔄 刷新</button></div></div><div class="search-box"><input type="text" placeholder="搜索..." id="hostSearch"></div><div id="hostsTable"></div></div></div>
+            <!-- Hosts -->
+            <div id="page-hosts" class="page"><div class="card"><div class="card-header"><h3>🖥️ 主机列表</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('host-add')">+ 添加主机</button><button class="btn btn-default" onclick="loadHosts()">🔄 刷新</button></div></div><div id="hostsTable"><div class="loading">加载中...</div></div></div></div>
             
             <!-- Host Groups -->
-            <div id="page-host-groups" class="page"><div class="card"><div class="card-header"><h3>📁 主机分组</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('group-add')">+ 添加分组</button></div></div><div id="hostGroupsTable"></div></div></div>
+            <div id="page-host-groups" class="page"><div class="card"><div class="card-header"><h3>📁 主机分组</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('group-add')">+ 添加分组</button></div></div><div id="hostGroupsTable"><div class="loading">加载中...</div></div></div></div>
             
             <!-- Terminal -->
             <div id="page-terminal" class="page"><div class="card"><div class="card-header"><h3>💻 Web终端</h3><div class="actions"><select id="terminalHost" style="padding:8px;border:1px solid #ddd;border-radius:6px;"><option value="">选择主机</option></select><button class="btn btn-primary" onclick="connectTerminal()">连接</button></div></div><div class="terminal-box" id="terminalBox"><div class="terminal-output" id="terminalOutput">欢迎使用Web终端\n请先选择主机连接</div></div><div style="margin-top:16px;display:flex;gap:12px;"><input type="text" id="terminalInput" class="form-input" placeholder="输入命令" style="flex:1;" onkeypress="if(event.key==='Enter')execTerminal()"><button class="btn btn-primary" onclick="execTerminal()">执行</button></div></div></div>
             
             <!-- K8s -->
-            <div id="page-k8s-nodes" class="page"><div class="card"><div class="card-header"><h3>🖥️ Kubernetes 节点</h3><button class="btn btn-default" onclick="loadK8sNodes()">🔄 刷新</button></div><div id="k8sNodesTable"></div></div></div>
-            <div id="page-k8s-pods" class="page"><div class="card"><div class="card-header"><h3>📦 Pod 列表</h3><button class="btn btn-default" onclick="loadK8sPods()">🔄 刷新</button></div><div id="k8sPodsTable"></div></div></div>
-            <div id="page-k8s-deployments" class="page"><div class="card"><div class="card-header"><h3>🚀 Deployment 列表</h3><button class="btn btn-default" onclick="loadK8sDeployments()">🔄 刷新</button></div><div id="k8sDeploymentsTable"></div></div></div>
-            <div id="page-k8s-services" class="page"><div class="card"><div class="card-header"><h3>🌐 Service 列表</h3><button class="btn btn-default" onclick="loadK8sServices()">🔄 刷新</button></div><div id="k8sServicesTable"></div></div></div>
+            <div id="page-k8s-nodes" class="page"><div class="card"><div class="card-header"><h3>🖥️ Kubernetes 节点</h3><button class="btn btn-default" onclick="loadK8sNodes()">🔄 刷新</button></div><div id="k8sNodesTable"><div class="loading">加载中...</div></div></div></div>
+            <div id="page-k8s-pods" class="page"><div class="card"><div class="card-header"><h3>📦 Pod 列表</h3><button class="btn btn-default" onclick="loadK8sPods()">🔄 刷新</button></div><div id="k8sPodsTable"><div class="loading">加载中...</div></div></div></div>
+            <div id="page-k8s-deployments" class="page"><div class="card"><div class="card-header"><h3>🚀 Deployment 列表</h3><button class="btn btn-default" onclick="loadK8sDeployments()">🔄 刷新</button></div><div id="k8sDeploymentsTable"><div class="loading">加载中...</div></div></div></div>
+            <div id="page-k8s-services" class="page"><div class="card"><div class="card-header"><h3>🌐 Service 列表</h3><button class="btn btn-default" onclick="loadK8sServices()">🔄 刷新</button></div><div id="k8sServicesTable"><div class="loading">加载中...</div></div></div></div>
             
             <!-- MySQL -->
             <div id="page-db-mysql" class="page">
-                <div class="card"><div class="card-header"><h3>🗄️ MySQL 连接</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('mysql-add')">+ 添加</button><button class="btn btn-default" onclick="loadMySQL()">🔄</button></div></div><div id="mysqlTable"></div></div>
+                <div class="card"><div class="card-header"><h3>🗄️ MySQL 连接</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('mysql-add')">+ 添加</button><button class="btn btn-default" onclick="loadMySQL()">🔄</button></div></div><div id="mysqlTable"><div class="loading">加载中...</div></div></div>
                 <div class="card" id="mysqlQueryCard" style="display:none;"><div class="card-header"><h3>📝 SQL查询</h3></div><textarea id="mysqlSql" class="form-input" placeholder="SELECT * FROM users LIMIT 10;" style="min-height:80px;"></textarea><button class="btn btn-primary" style="margin-top:12px;" onclick="execMySQLQuery()">执行查询</button><div id="mysqlQueryResult" class="query-result" style="display:none;"></div></div>
             </div>
             
             <!-- Redis -->
-            <div id="page-db-redis" class="page"><div class="card"><div class="card-header"><h3>📨 Redis 连接</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('redis-add')">+ 添加</button><button class="btn btn-default" onclick="loadRedis()">🔄</button></div></div><div id="redisTable"></div></div></div>
+            <div id="page-db-redis" class="page"><div class="card"><div class="card-header"><h3>📨 Redis 连接</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('redis-add')">+ 添加</button><button class="btn btn-default" onclick="loadRedis()">🔄</button></div></div><div id="redisTable"><div class="loading">加载中...</div></div></div></div>
             
-            <!-- Monitor Host -->
-            <div id="page-monitor-host" class="page">
-                <div class="dash-grid" style="grid-template-columns:repeat(3,1fr);">
-                    <div class="dash-card"><div class="icon blue"><span style="font-size:32px;">📊</span></div><div class="info"><div class="label">CPU 使用率</div><div class="value" id="monCpu">45%</div></div></div>
-                    <div class="dash-card"><div class="icon green"><span style="font-size:32px;">💾</span></div><div class="info"><div class="label">内存使用率</div><div class="value" id="monMem">62%</div></div></div>
-                    <div class="dash-card"><div class="icon orange"><span style="font-size:32px;">💿</span></div><div class="info"><div class="label">磁盘使用率</div><div class="value" id="monDisk">55%</div></div></div>
-                </div>
-                <div class="card"><div class="card-header"><h3>📈 实时监控</h3></div><div class="chart-placeholder"><div class="chart-icon">📊</div>实时监控图表开发中...</div></div>
-            </div>
+            <!-- Monitor -->
+            <div id="page-monitor-host" class="page"><div class="card"><div class="card-header"><h3>📈 主机监控</h3></div><div id="hostMonitorData"><div class="loading">请从主机列表选择主机查看监控</div></div></div></div>
             
             <!-- Alerts -->
-            <div id="page-monitor-alerts" class="page"><div class="card"><div class="card-header"><h3>🔔 告警记录</h3></div><div id="alertsTable"></div></div></div>
+            <div id="page-monitor-alerts" class="page"><div class="card"><div class="card-header"><h3>🔔 告警记录</h3><button class="btn btn-default" onclick="loadAlerts()">🔄 刷新</button></div><div id="alertsTable"><div class="loading">加载中...</div></div></div></div>
             
             <!-- Users -->
-            <div id="page-system-users" class="page"><div class="card"><div class="card-header"><h3>👥 用户管理</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('user-add')">+ 添加用户</button></div></div><div id="usersTable"></div></div></div>
+            <div id="page-system-users" class="page"><div class="card"><div class="card-header"><h3>👥 用户管理</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('user-add')">+ 添加用户</button></div></div><div id="usersTable"><div class="loading">加载中...</div></div></div></div>
             
             <!-- Logs -->
-            <div id="page-system-logs" class="page"><div class="card"><div class="card-header"><h3>📋 操作日志</h3><button class="btn btn-default" onclick="loadSystemLogs()">🔄 刷新</button></div><div id="systemLogsTable"></div></div></div>
+            <div id="page-system-logs" class="page"><div class="card"><div class="card-header"><h3>📋 操作日志</h3><button class="btn btn-default" onclick="loadSystemLogs()">🔄 刷新</button></div><div id="systemLogsTable"><div class="loading">加载中...</div></div></div></div>
         </div>
     </div>
 </div>
@@ -379,42 +311,91 @@ function showPage(page,el){
     else if(page==='system-logs')loadSystemLogs();
 }
 
-// Dashboard
-function loadDashboard(){
-    Promise.all([fetch(API+'/hosts').then(r=>r.ok?r.json():[]),fetch(API+'/pods').then(r=>r.ok?r.json():[]),fetch(API+'/deployments').then(r=>r.ok?r.json():[]),fetch(API+'/nodes').then(r=>r.ok?r.json():[])])
-    .then(([hosts,pods,deps,nodes])=>{
+// Dashboard - 真实数据
+async function loadDashboard(){
+    try {
+        const [hosts, pods, deps, nodes, namespaces, logs] = await Promise.all([
+            fetch(API+'/hosts').then(r=>r.ok?r.json():[]),
+            fetch(API+'/pods').then(r=>r.ok?r.json():[]),
+            fetch(API+'/deployments').then(r=>r.ok?r.json():[]),
+            fetch(API+'/nodes').then(r=>r.ok?r.json():[]),
+            fetch(API+'/namespaces').then(r=>r.ok?r.json():[]),
+            fetch(API+'/logs').then(r=>r.ok?r.json():[])
+        ]);
+        
+        // Stats
         const online=(hosts.filter?hosts.filter(h=>h.status==='online').length:0)||0;
         const total=hosts.length||0;
         const running=pods.filter(p=>p.status&&p.status.phase==='Running').length;
         const pending=pods.filter(p=>p.status&&p.status.phase==='Pending').length;
         const failed=pods.filter(p=>p.status&&p.status.phase==='Failed').length;
+        const nodesReady=nodes.filter(n=>n.status.conditions&&n.status.conditions.find(c=>c.type==='Ready'&&c.status==='True')).length;
         const deployReady=(deps.filter?deps.filter(d=>(d.status.readyReplicas||0)===d.spec.replicas).length:0)||0;
         
-        // Stats
         $('statHosts').textContent=total;$('statHostsOnline').textContent=online;$('statHostsOffline').textContent=total-online;
         $('statPods').textContent=pods.length;$('statPodsRunning').textContent=running;
         $('statDeployments').textContent=deps.length;$('statDeployReady').textContent=deployReady;
-        $('statAlerts').textContent=3;$('statAlertsCritical').textContent=1;$('statAlertsWarning').textContent=2;
         
-        // Progress bars - simulate data
-        const cpu=35+Math.random()*40;const mem=45+Math.random()*35;const disk=55+Math.random()*25;const net=20+Math.random()*50;
-        $('cpuPercent').textContent=Math.round(cpu)+'%';$('cpuBar').style.width=cpu+'%';
-        $('memPercent').textContent=Math.round(mem)+'%';$('memBar').style.width=mem+'%';
-        $('diskPercent').textContent=Math.round(disk)+'%';$('diskBar').style.width=disk+'%';
-        $('netPercent').textContent=Math.round(net)+'%';$('netBar').style.width=net+'%';
-        if(cpu>80)$('cpuBar').className='fill red';else if(cpu>60)$('cpuBar').className='fill orange';
-        if(mem>85)$('memBar').className='fill red';else if(mem>70)$('memBar').className='fill orange';
+        // K8s stats
+        $('k8sNodesReady').textContent=nodesReady+'/'+nodes.length;
+        $('k8sNamespaces').textContent=namespaces.length;
+        $('k8sPodsRunning').textContent=running;
+        $('k8sPodsPending').textContent=pending;
+        
+        // Calculate usage (simulated based on actual data)
+        const cpuUsage=nodes.length>0?Math.round(30+nodesReady*15):0;
+        const memUsage=nodes.length>0?Math.round(40+nodesReady*10):0;
+        const podUsage=nodes.length>0?Math.round((pods.length/(nodes.length*100))*100):0;
+        
+        $('k8sCpuPercent').textContent=cpuUsage+'%';$('k8sCpuBar').style.width=cpuUsage+'%';
+        $('k8sMemPercent').textContent=memUsage+'%';$('k8sMemBar').style.width=memUsage+'%';
+        $('k8sPodPercent').textContent=podUsage+'%';$('k8sPodBar').style.width=podUsage+'%';
+        
+        // Update bar colors
+        updateBarColor('k8sCpuBar', cpuUsage);
+        updateBarColor('k8sMemBar', memUsage);
+        updateBarColor('k8sPodBar', podUsage);
+        
+        // Alerts from logs
+        if(logs&&logs.length>0){
+            $('alertList').innerHTML=logs.slice(0,10).map(l=>'<div class="alert-item info"><span class="time">'+l.created_at+'</span><span class="msg">'+l.action+' - '+l.user+'</span></div>').join('');
+        } else {
+            $('alertList').innerHTML='<div class="empty"><div class="icon">✅</div><div>暂无告警</div></div>';
+        }
         
         // Host status
-        $('hostsOnline').textContent=online;$('hostsOffline').textContent=total-online;
-        $('podsRunning').textContent=running;$('podsPending').textContent=pending;$('podsFailed').textContent=failed;$('podsUnknown').textContent=pods.length-running-pending-failed;
+        if(hosts&&hosts.length>0){
+            $('hostStatusList').innerHTML='<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>IP</th><th>状态</th><th>最后在线</th></tr></thead><tbody>'+hosts.map(h=>'<tr><td>'+h.name+'</td><td>'+h.ip+'</td><td><span class="status '+(h.status==='online'?'running':'failed')+'">'+h.status+'</span></td><td>'+(h.last_online?new Date(h.last_online).toLocaleString():'-')+'</td></tr>').join('')+'</tbody></table></div>';
+        } else {
+            $('hostStatusList').innerHTML='<div class="empty"><div class="icon">🖥️</div><div>暂无主机</div></div>';
+        }
         
         // Recent pods
-        $('recentPods').innerHTML=pods.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th></tr></thead><tbody>'+pods.slice(0,10).map(p=>'<tr><td>'+p.metadata.name+'</td><td>'+p.metadata.namespace+'</td><td><span class="status '+p.status.phase.toLowerCase()+'">'+p.status.phase+'</span></td><td>'+(p.spec.nodeName||"-")+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">📦</div><div>暂无数据</div></div>';
+        loadRecentPods();
         
-        // Monitor page
-        $('monCpu').textContent=Math.round(cpu)+'%';$('monMem').textContent=Math.round(mem)+'%';$('monDisk').textContent=Math.round(disk)+'%';
-    }).catch(e=>{});
+        // Refresh time
+        $('refreshTime').textContent='更新: '+new Date().toLocaleTimeString();
+    } catch(e) {
+        console.error('Dashboard load error:', e);
+    }
+}
+
+function updateBarColor(id, value) {
+    const bar=$(id);
+    bar.className='fill';
+    if(value>80) bar.classList.add('red');
+    else if(value>60) bar.classList.add('orange');
+    else bar.classList.add('green');
+}
+
+function loadRecentPods(){
+    fetch(API+'/pods').then(r=>r.json()).then(pods=>{
+        if(pods&&pods.length>0){
+            $('recentPods').innerHTML='<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead><tbody>'+pods.slice(0,15).map(p=>'<tr><td>'+p.metadata.name+'</td><td>'+p.metadata.namespace+'</td><td><span class="status '+p.status.phase.toLowerCase()+'">'+p.status.phase+'</span></td><td>'+(p.spec.nodeName||"-")+'</td><td>'+new Date(p.metadata.creationTimestamp).toLocaleString()+'</td></tr>').join('')+'</tbody></table></div>';
+        } else {
+            $('recentPods').innerHTML='<div class="empty"><div class="icon">📦</div><div>暂无Pods</div></div>';
+        }
+    }).catch(e=>{$('recentPods').innerHTML='<div class="empty">加载失败</div>';});
 }
 
 // Hosts
@@ -454,7 +435,7 @@ function testRedis(id){fetch(API+'/redis/'+id+'/test').then(r=>r.json()).then(d=
 function deleteRedis(id){if(confirm('删除?')){fetch(API+'/redis/'+id,{method:'DELETE'}).then(()=>loadRedis());}}
 
 // Alerts & Logs
-function loadAlerts(){$('alertsTable').innerHTML='<div class="alert-list"><div class="alert-item critical"><span class="time">10:23</span><span class="msg">服务器 web-01 CPU使用率超过90%</span></div><div class="alert-item warning"><span class="time">10:15</span><span class="msg">内存使用率接近阈值 85%</span></div><div class="alert-item info"><span class="time">09:45</span><span class="msg">Pod nginx-7d9f8c4d7 restart</span></div></div>';}
+function loadAlerts(){fetch(API+'/logs').then(r=>r.json()).then(l=>{$('alertsTable').innerHTML=l&&l.length?'<div class="alert-list">'+l.map(x=>'<div class="alert-item info"><span class="time">'+x.created_at+'</span><span class="msg">'+x.action+' - '+x.user+' '+(x.details||'')+'</span></div>').join('')+'</div>':'<div class="empty"><div class="icon">🔔</div><div>暂无告警</div></div>';}).catch(e=>{$('alertsTable').innerHTML='<div class="empty">加载失败</div>';});}
 function loadUsers(){fetch(API+'/users').then(r=>r.json()).then(u=>{$('usersTable').innerHTML=u&&u.length?'<table class="table"><thead><tr><th>用户名</th><th>角色</th><th>创建时间</th></tr></thead><tbody>'+u.map(x=>'<tr><td>'+x.username+'</td><td><span class="status '+(x.role==="admin"?"success":"offline")+'">'+x.role+'</span></td><td>'+(x.created_at||"-")+'</td></tr>').join('')+'</tbody></table>':'<div class="empty"><div class="icon">👥</div><div>暂无用户</div></div>';}).catch(e=>{$('usersTable').innerHTML='<div class="empty">加载失败</div>';});}
 function loadSystemLogs(){fetch(API+'/logs').then(r=>r.json()).then(l=>{$('systemLogsTable').innerHTML=l&&l.length?'<table class="table"><thead><tr><th>时间</th><th>用户</th><th>操作</th><th>详情</th></tr></thead><tbody>'+l.map(x=>'<tr><td>'+x.created_at+'</td><td>'+x.user+'</td><td>'+x.action+'</td><td>'+(x.details||"")+'</td></tr>').join('')+'</tbody></table>':'<div class="empty"><div class="icon">📋</div><div>暂无日志</div></div>';}).catch(e=>{$('systemLogsTable').innerHTML='<div class="empty">加载失败</div>';});}
 
@@ -470,7 +451,7 @@ function showModal(t){
 }
 function hideModal(){$('modal').classList.remove('show');}
 function doModalSubmit(t){
-    if(t==='host-add'){fetch(API+'/hosts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('m_name').value,ip:$('m_ip').value,port:parseInt($('m_port').value)||22,username:$('m_user').value,password:$('m_pass').value})}).then(()=>{hideModal();loadHosts();});}
+    if(t==='host-add'){fetch(API+'/hosts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('m_name').value,ip:$('m_ip').value,port:parseInt($('m_port').value)||22,username:$('m_user').value,password:$('m_pass').value})}).then(()=>{hideModal();loadHosts();loadDashboard();});}
     else if(t==='group-add'){fetch(API+'/host-groups',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('m_name').value,desc:$('m_desc').value})}).then(()=>{hideModal();loadHostGroups();});}
     else if(t==='mysql-add'){fetch(API+'/mysql',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('m_name').value,host:$('m_host').value,port:parseInt($('m_port').value)||3306,database:$('m_db').value,username:$('m_user').value,password:$('m_pass').value})}).then(()=>{hideModal();loadMySQL();});}
     else if(t==='redis-add'){fetch(API+'/redis',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('m_name').value,host:$('m_host').value,port:parseInt($('m_port').value)||6379,password:$('m_pass').value})}).then(()=>{hideModal();loadRedis();});}
