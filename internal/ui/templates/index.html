@@ -23,146 +23,70 @@
             padding: 40px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-        .login-box h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #1a1a2e;
-            font-size: 24px;
-        }
+        .login-box h1 { text-align: center; margin-bottom: 30px; color: #1a1a2e; font-size: 24px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
+        .form-input { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; transition: all 0.3s; }
         .form-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
-        .btn-login {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+        .btn-login { width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
         .btn-login:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.4); }
         .btn-login:disabled { opacity: 0.6; cursor: not-allowed; }
         .error-msg { background: #fff2f0; color: #cf1322; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; display: none; }
         .error-msg.show { display: block; }
         .captcha-row { display: flex; gap: 12px; }
         .captcha-row .form-input { flex: 1; }
-        .captcha-img {
-            width: 100px;
-            height: 44px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #667eea;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 2px;
-        }
+        .captcha-img { width: 100px; height: 44px; background: #f5f5f5; border-radius: 8px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #667eea; font-weight: 700; font-size: 16px; letter-spacing: 2px; }
         
         /* Main Layout */
         .main { display: none; height: 100vh; }
         .main.show { display: flex; }
         
-        /* Left Sidebar */
-        .sidebar {
-            width: 200px;
-            background: #1a1a2e;
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar-header {
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .sidebar-header h1 { color: #fff; font-size: 18px; }
+        /* Sidebar */
+        .sidebar { width: 220px; background: #1a1a2e; display: flex; flex-direction: column; }
         
-        .sidebar-nav { flex: 1; padding: 16px 0; }
-        .nav-item {
+        .sidebar-header { height: 64px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-header h1 { color: #fff; font-size: 20px; font-weight: 600; }
+        
+        .sidebar-nav { flex: 1; overflow-y: auto; padding: 12px 0; }
+        
+        .menu-group { margin-bottom: 4px; }
+        .menu-title { padding: 10px 20px; color: rgba(255,255,255,0.4); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .menu-item {
             display: flex;
             align-items: center;
-            padding: 14px 24px;
-            color: rgba(255,255,255,0.7);
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.8);
             cursor: pointer;
             transition: all 0.2s;
             font-size: 14px;
             gap: 12px;
         }
-        .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
-        .nav-item.active { background: #667eea; color: #fff; }
-        .nav-item .icon { font-size: 18px; }
+        .menu-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .menu-item.active { background: #667eea; color: #fff; }
+        .menu-item .icon { font-size: 18px; }
         
-        .sidebar-footer {
-            padding: 16px 24px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .user-info { color: rgba(255,255,255,0.7); font-size: 13px; }
-        .logout-btn {
-            width: 100%;
-            margin-top: 12px;
-            padding: 10px;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-        }
+        .submenu { display: none; padding-left: 44px; }
+        .submenu.show { display: block; }
+        .submenu-item { padding: 10px 20px; color: rgba(255,255,255,0.6); font-size: 13px; cursor: pointer; transition: all 0.2s; }
+        .submenu-item:hover { color: #fff; }
+        .submenu-item.active { color: #667eea; }
+        
+        .sidebar-footer { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .user-info { color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 12px; }
+        .logout-btn { width: 100%; padding: 10px; background: rgba(255,255,255,0.1); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
         .logout-btn:hover { background: rgba(255,255,255,0.2); }
         
         /* Content */
-        .content {
-            flex: 1;
-            background: #f5f7fa;
-            overflow-y: auto;
-        }
-        
-        .content-header {
-            background: #fff;
-            padding: 0 24px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+        .content { flex: 1; background: #f5f7fa; overflow-y: auto; }
+        .content-header { background: #fff; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10; }
         .content-header h2 { color: #333; font-size: 18px; font-weight: 600; }
         .breadcrumb { color: #999; font-size: 13px; }
-        
         .content-body { padding: 24px; }
         
         /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .stat-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .stat-card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
         .stat-card .label { color: #666; font-size: 13px; margin-bottom: 8px; }
         .stat-card .value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
         .stat-card .value.green { color: #52c41a; }
@@ -170,56 +94,24 @@
         .stat-card .value.red { color: #f5222d; }
         
         /* Cards */
-        .card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #f0f0f0;
-        }
+        .card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
         .card-header h3 { color: #333; font-size: 15px; font-weight: 600; }
         
         /* Table */
         .table { width: 100%; border-collapse: collapse; }
-        .table th {
-            background: #fafafa;
-            padding: 10px 12px;
-            text-align: left;
-            font-size: 12px;
-            font-weight: 600;
-            color: #666;
-            text-transform: uppercase;
-        }
-        .table td {
-            padding: 12px;
-            font-size: 13px;
-            color: #333;
-            border-bottom: 1px solid #f0f0f0;
-        }
+        .table th { background: #fafafa; padding: 10px 12px; text-align: left; font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; }
+        .table td { padding: 12px; font-size: 13px; color: #333; border-bottom: 1px solid #f0f0f0; }
         .table tr:hover td { background: #fafafa; }
         .table tr:last-child td { border-bottom: none; }
         
-        .status {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
+        .status { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
         .status.running { background: #f6ffed; color: #52c41a; }
         .status.pending { background: #fffbe6; color: #fa8c16; }
         .status.failed { background: #fff2f0; color: #f5222d; }
         
         .loading { text-align: center; padding: 40px; color: #999; }
-        .error-msg { background: #fff2f0; padding: 16px; border-radius: 8px; color: #cf1322; }
-        
+        .error-msg-box { background: #fff2f0; padding: 16px; border-radius: 8px; color: #cf1322; }
         .page { display: none; }
         .page.active { display: block; }
     </style>
@@ -252,41 +144,93 @@
 
 <!-- Main -->
 <div id="mainPage" class="main">
-    <!-- Left Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header">
             <h1>⚙️ AutoOps</h1>
         </div>
         <div class="sidebar-nav">
-            <div class="nav-item active" onclick="showPage('dashboard', this)">
-                <span class="icon">📊</span>
-                <span>仪表盘</span>
+            <div class="menu-group">
+                <div class="menu-item active" onclick="showPage('dashboard', this)">
+                    <span class="icon">📊</span><span>仪表盘</span>
+                </div>
             </div>
-            <div class="nav-item" onclick="showPage('nodes', this)">
-                <span class="icon">🖥️</span>
-                <span>节点</span>
+            
+            <div class="menu-group">
+                <div class="menu-title">资产管理</div>
+                <div class="menu-item" onclick="toggleSubmenu(this, 'nodes')">
+                    <span class="icon">🖥️</span><span>节点</span>
+                </div>
             </div>
-            <div class="nav-item" onclick="showPage('pods', this)">
-                <span class="icon">📦</span>
-                <span>Pod</span>
+            
+            <div class="menu-group">
+                <div class="menu-title">容器管理</div>
+                <div class="menu-item" onclick="showPage('pods', this)">
+                    <span class="icon">📦</span><span>Pod</span>
+                </div>
+                <div class="menu-item" onclick="showPage('deployments', this)">
+                    <span class="icon">🚀</span><span>Deployment</span>
+                </div>
+                <div class="menu-item" onclick="showPage('services', this)">
+                    <span class="icon">🌐</span><span>Service</span>
+                </div>
+                <div class="menu-item" onclick="showPage('ingresses', this)">
+                    <span class="icon">🌍</span><span>Ingress</span>
+                </div>
             </div>
-            <div class="nav-item" onclick="showPage('deployments', this)">
-                <span class="icon">🚀</span>
-                <span>Deployment</span>
+            
+            <div class="menu-group">
+                <div class="menu-title">服务管理</div>
+                <div class="menu-item" onclick="showPage('configmaps', this)">
+                    <span class="icon">🔧</span><span>ConfigMap</span>
+                </div>
+                <div class="menu-item" onclick="showPage('secrets', this)">
+                    <span class="icon">🔐</span><span>Secret</span>
+                </div>
             </div>
-            <div class="nav-item" onclick="showPage('services', this)">
-                <span class="icon">🌐</span>
-                <span>Service</span>
+            
+            <div class="menu-group">
+                <div class="menu-title">监控中心</div>
+                <div class="menu-item" onclick="showPage('monitor', this)">
+                    <span class="icon">📈</span><span>监控</span>
+                </div>
             </div>
-            <div class="nav-item" onclick="showPage('configmaps', this)">
-                <span class="icon">🔧</span>
-                <span>ConfigMap</span>
+            
+            <div class="menu-group">
+                <div class="menu-title">任务中心</div>
+                <div class="menu-item" onclick="showPage('jobs', this)">
+                    <span class="icon">📝</span><span>Jobs</span>
+                </div>
+                <div class="menu-item" onclick="showPage('cronjobs', this)">
+                    <span class="icon">⏰</span><span>CronJobs</span>
+                </div>
             </div>
-            <div class="nav-item" onclick="showPage('secrets', this)">
-                <span class="icon">🔐</span>
-                <span>Secret</span>
+            
+            <div class="menu-group">
+                <div class="menu-title">运维工具</div>
+                <div class="menu-item" onclick="showPage('terminal', this)">
+                    <span class="icon">💻</span><span>终端</span>
+                </div>
+                <div class="menu-item" onclick="showPage('yaml-editor', this)">
+                    <span class="icon">📄</span><span>YAML编辑器</span>
+                </div>
+            </div>
+            
+            <div class="menu-group">
+                <div class="menu-title">配置中心</div>
+                <div class="menu-item" onclick="showPage('settings', this)">
+                    <span class="icon">⚙️</span><span>设置</span>
+                </div>
+            </div>
+            
+            <div class="menu-group">
+                <div class="menu-title">操作审计</div>
+                <div class="menu-item" onclick="showPage('logs', this)">
+                    <span class="icon">📋</span><span>操作日志</span>
+                </div>
             </div>
         </div>
+        
         <div class="sidebar-footer">
             <div class="user-info" id="userDisplay"></div>
             <button class="logout-btn" onclick="logout()">退出登录</button>
@@ -356,6 +300,14 @@
                 </div>
             </div>
             
+            <!-- Ingress -->
+            <div id="page-ingresses" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>🌍 Ingress 列表</h3></div>
+                    <div id="ingressesTable"></div>
+                </div>
+            </div>
+            
             <!-- ConfigMaps -->
             <div id="page-configmaps" class="page">
                 <div class="card">
@@ -369,6 +321,62 @@
                 <div class="card">
                     <div class="card-header"><h3>🔐 Secret 列表</h3></div>
                     <div id="secretsTable"></div>
+                </div>
+            </div>
+            
+            <!-- Monitor -->
+            <div id="page-monitor" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>📈 集群监控</h3></div>
+                    <div class="loading">监控功能开发中...</div>
+                </div>
+            </div>
+            
+            <!-- Jobs -->
+            <div id="page-jobs" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>📝 Jobs 列表</h3></div>
+                    <div id="jobsTable"></div>
+                </div>
+            </div>
+            
+            <!-- CronJobs -->
+            <div id="page-cronjobs" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>⏰ CronJobs 列表</h3></div>
+                    <div id="cronjobsTable"></div>
+                </div>
+            </div>
+            
+            <!-- Terminal -->
+            <div id="page-terminal" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>💻 Web终端</h3></div>
+                    <div class="loading">终端功能开发中...</div>
+                </div>
+            </div>
+            
+            <!-- YAML Editor -->
+            <div id="page-yaml-editor" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>📄 YAML编辑器</h3></div>
+                    <div class="loading">编辑器功能开发中...</div>
+                </div>
+            </div>
+            
+            <!-- Settings -->
+            <div id="page-settings" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>⚙️ 系统设置</h3></div>
+                    <div class="loading">设置功能开发中...</div>
+                </div>
+            </div>
+            
+            <!-- Logs -->
+            <div id="page-logs" class="page">
+                <div class="card">
+                    <div class="card-header"><h3>📋 操作日志</h3></div>
+                    <div class="loading">日志功能开发中...</div>
                 </div>
             </div>
             
@@ -464,30 +472,34 @@ function logout() {
 }
 
 const pageTitles = {
-    dashboard: '仪表盘',
-    nodes: '节点',
-    pods: 'Pod',
-    deployments: 'Deployment',
-    services: 'Service',
-    configmaps: 'ConfigMap',
-    secrets: 'Secret'
+    dashboard: '仪表盘', nodes: '节点', pods: 'Pod', deployments: 'Deployment',
+    services: 'Service', ingresses: 'Ingress', configmaps: 'ConfigMap', secrets: 'Secret',
+    monitor: '监控', jobs: 'Jobs', cronjobs: 'CronJobs', terminal: '终端',
+    'yaml-editor': 'YAML编辑器', settings: '设置', logs: '操作日志'
 };
 
+function toggleSubmenu(el, page) {
+    el.classList.toggle('active');
+}
+
 function showPage(page, el) {
-    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
     if (el) el.classList.add('active');
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     $('page-' + page).classList.add('active');
-    $('pageTitle').textContent = pageTitles[page];
-    $('breadcrumb').textContent = pageTitles[page];
+    $('pageTitle').textContent = pageTitles[page] || page;
+    $('breadcrumb').textContent = pageTitles[page] || page;
     
     if (page === 'dashboard') loadDashboard();
     else if (page === 'nodes') loadNodes();
     else if (page === 'pods') loadPods();
     else if (page === 'deployments') loadDeployments();
     else if (page === 'services') loadServices();
+    else if (page === 'ingresses') loadIngresses();
     else if (page === 'configmaps') loadConfigmaps();
     else if (page === 'secrets') loadSecrets();
+    else if (page === 'jobs') loadJobs();
+    else if (page === 'cronjobs') loadCronjobs();
 }
 
 function loadDashboard() {
@@ -515,137 +527,69 @@ function loadDashboard() {
             <div class="stat-card"><div class="label">❌ Failed</div><div class="value red">${failed}</div></div>
         `;
         
-        $('podsStatus').innerHTML = `
-            <table class="table">
-                <tr><td>✅ Running</td><td style="color:#52c41a;font-weight:600;">${running}</td></tr>
-                <tr><td>⏳ Pending</td><td style="color:#fa8c16;font-weight:600;">${pending}</td></tr>
-                <tr><td>❌ Failed</td><td style="color:#f5222d;font-weight:600;">${failed}</td></tr>
-            </table>`;
+        $('podsStatus').innerHTML = '<table class="table"><tr><td>✅ Running</td><td style="color:#52c41a;font-weight:600;">' + running + '</td></tr><tr><td>⏳ Pending</td><td style="color:#fa8c16;font-weight:600;">' + pending + '</td></tr><tr><td>❌ Failed</td><td style="color:#f5222d;font-weight:600;">' + failed + '</td></tr></table>';
         
-        $('nodesStatus').innerHTML = `
-            <table class="table">
-                <tr><td>✅ Ready</td><td style="color:#52c41a;font-weight:600;">${readyNodes}</td></tr>
-                <tr><td>❌ NotReady</td><td style="color:#f5222d;font-weight:600;">${nodes.length - readyNodes}</td></tr>
-            </table>`;
+        $('nodesStatus').innerHTML = '<table class="table"><tr><td>✅ Ready</td><td style="color:#52c41a;font-weight:600;">' + readyNodes + '</td></tr><tr><td>❌ NotReady</td><td style="color:#f5222d;font-weight:600;">' + (nodes.length - readyNodes) + '</td></tr></table>';
         
-        $('deploymentsList').innerHTML = deployments.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>Ready</th></tr></thead>
-                <tbody>${deployments.map(d => {
-                    const ready = d.status.readyReplicas || 0;
-                    const desired = d.spec.replicas || 0;
-                    return `<tr><td>${d.metadata.name}</td><td>${d.metadata.namespace}</td><td><span class="status ${ready === desired ? 'running' : 'pending'}">${ready}/${desired}</span></td></tr>`;
-                }).join('')}</tbody>
-            </table>` : '<div class="loading">暂无数据</div>';
+        $('deploymentsList').innerHTML = deployments.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>Ready</th></tr></thead><tbody>' + deployments.map(d => '<tr><td>' + d.metadata.name + '</td><td>' + d.metadata.namespace + '</td><td><span class="status ' + ((d.status.readyReplicas||0) === d.spec.replicas ? 'running' : 'pending') + '">' + (d.status.readyReplicas||0) + '/' + (d.spec.replicas||0) + '</span></td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无数据</div>';
         
-        $('podsList').innerHTML = pods.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th></tr></thead>
-                <tbody>${pods.slice(0, 20).map(p => `<tr>
-                    <td>${p.metadata.name}</td><td>${p.metadata.namespace}</td>
-                    <td><span class="status ${p.status.phase.toLowerCase()}">${p.status.phase}</span></td>
-                    <td>${p.spec.nodeName || '-'}</td>
-                </tr>`).join('')}</tbody>
-            </table>
-            ${pods.length > 20 ? '<div style="text-align:center;padding:12px;color:#999;">共 ' + pods.length + ' 条，显示前20条</div>' : ''}` : '<div class="loading">暂无数据</div>';
+        $('podsList').innerHTML = pods.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th></tr></thead><tbody>' + pods.slice(0, 20).map(p => '<tr><td>' + p.metadata.name + '</td><td>' + p.metadata.namespace + '</td><td><span class="status ' + p.status.phase.toLowerCase() + '">' + p.status.phase + '</span></td><td>' + (p.spec.nodeName||'-') + '</td></tr>').join('') + '</tbody></table>' + (pods.length > 20 ? '<div style="text-align:center;padding:12px;color:#999;">共 ' + pods.length + ' 条，显示前20条</div>' : '') : '<div class="loading">暂无数据</div>';
     })
-    .catch(e => {
-        $('statsGrid').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
-    });
+    .catch(e => { $('statsGrid').innerHTML = '<div class="error-msg-box">加载失败: ' + e.message + '</div>'; });
 }
 
 function loadNodes() {
     fetch(API + '/nodes').then(r => r.json()).then(nodes => {
-        $('nodesTable').innerHTML = nodes.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>状态</th><th>角色</th><th>版本</th><th>CPU</th><th>内存</th></tr></thead>
-                <tbody>${nodes.map(n => {
-                    const ready = n.status.conditions.find(c => c.type === 'Ready' && c.status === 'True');
-                    const role = n.metadata.labels['node-role.kubernetes.io/control-plane'] ? 'control-plane' : 'worker';
-                    return `<tr>
-                        <td>${n.metadata.name}</td>
-                        <td><span class="status ${ready ? 'running' : 'failed'}">${ready ? 'Ready' : 'NotReady'}</span></td>
-                        <td>${role}</td>
-                        <td>${n.status.nodeInfo.kubeletVersion}</td>
-                        <td>${n.status.capacity.cpu}</td>
-                        <td>${Math.round(parseInt(n.status.capacity.memory)/1024/1024/1024)}Gi</td>
-                    </tr>`;
-                }).join('')}</tbody>
-            </table>` : '<div class="loading">暂无节点</div>';
-    }).catch(e => { $('nodesTable').innerHTML = '<div class="error-msg">加载失败</div>'; });
+        $('nodesTable').innerHTML = nodes.length ? '<table class="table"><thead><tr><th>名称</th><th>状态</th><th>角色</th><th>版本</th><th>CPU</th><th>内存</th></tr></thead><tbody>' + nodes.map(n => '<tr><td>' + n.metadata.name + '</td><td><span class="status ' + (n.status.conditions.find(c=>c.type==='Ready'&&c.status==='True')?'running':'failed') + '">' + (n.status.conditions.find(c=>c.type==='Ready'&&c.status==='True')?'Ready':'NotReady') + '</span></td><td>' + (n.metadata.labels['node-role.kubernetes.io/control-plane']?'control-plane':'worker') + '</td><td>' + n.status.nodeInfo.kubeletVersion + '</td><td>' + n.status.capacity.cpu + '</td><td>' + Math.round(parseInt(n.status.capacity.memory)/1024/1024/1024) + 'Gi</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无节点</div>';
+    }).catch(e => { $('nodesTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
 }
 
 function loadPods() {
     fetch(API + '/pods').then(r => r.json()).then(pods => {
-        $('podsTable').innerHTML = pods.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead>
-                <tbody>${pods.map(p => `<tr>
-                    <td>${p.metadata.name}</td><td>${p.metadata.namespace}</td>
-                    <td><span class="status ${p.status.phase.toLowerCase()}">${p.status.phase}</span></td>
-                    <td>${p.spec.nodeName || '-'}</td>
-                    <td>${new Date(p.metadata.creationTimestamp).toLocaleString()}</td>
-                </tr>`).join('')}</tbody>
-            </table>` : '<div class="loading">暂无Pods</div>';
-    }).catch(e => { $('podsTable').innerHTML = '<div class="error-msg">加载失败</div>'; });
+        $('podsTable').innerHTML = pods.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead><tbody>' + pods.map(p => '<tr><td>' + p.metadata.name + '</td><td>' + p.metadata.namespace + '</td><td><span class="status ' + p.status.phase.toLowerCase() + '">' + p.status.phase + '</span></td><td>' + (p.spec.nodeName||'-') + '</td><td>' + new Date(p.metadata.creationTimestamp).toLocaleString() + '</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无Pods</div>';
+    }).catch(e => { $('podsTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
 }
 
 function loadDeployments() {
     fetch(API + '/deployments').then(r => r.json()).then(deps => {
-        $('deploymentsTable').innerHTML = deps.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>Available</th></tr></thead>
-                <tbody>${deps.map(d => {
-                    const ready = d.status.readyReplicas || 0;
-                    const desired = d.spec.replicas || 0;
-                    return `<tr>
-                        <td>${d.metadata.name}</td><td>${d.metadata.namespace}</td>
-                        <td><span class="status ${ready === desired ? 'running' : 'pending'}">${ready}/${desired}</span></td>
-                        <td>${d.status.availableReplicas || 0}</td>
-                    </tr>`;
-                }).join('')}</tbody>
-            </table>` : '<div class="loading">暂无Deployments</div>';
-    }).catch(e => { $('deploymentsTable').innerHTML = '<div class="error-msg">加载失败</div>'; });
+        $('deploymentsTable').innerHTML = deps.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>Available</th></tr></thead><tbody>' + deps.map(d => '<tr><td>' + d.metadata.name + '</td><td>' + d.metadata.namespace + '</td><td><span class="status ' + ((d.status.readyReplicas||0) === d.spec.replicas?'running':'pending') + '">' + (d.status.readyReplicas||0) + '/' + (d.spec.replicas||0) + '</span></td><td>' + (d.status.availableReplicas||0) + '</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无Deployments</div>';
+    }).catch(e => { $('deploymentsTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
 }
 
 function loadServices() {
     fetch(API + '/services').then(r => r.json()).then(svcs => {
-        $('servicesTable').innerHTML = svcs.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>ClusterIP</th><th>端口</th></tr></thead>
-                <tbody>${svcs.map(s => `<tr>
-                    <td>${s.metadata.name}</td><td>${s.metadata.namespace}</td>
-                    <td>${s.spec.type}</td><td>${s.spec.clusterIP || '-'}</td>
-                    <td>${s.spec.ports.map(p => p.port).join(', ')}</td>
-                </tr>`).join('')}</tbody>
-            </table>` : '<div class="loading">暂无Services</div>';
-    }).catch(e => { $('servicesTable').innerHTML = '<div class="error-msg">加载失败</div>'; });
+        $('servicesTable').innerHTML = svcs.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>ClusterIP</th><th>端口</th></tr></thead><tbody>' + svcs.map(s => '<tr><td>' + s.metadata.name + '</td><td>' + s.metadata.namespace + '</td><td>' + s.spec.type + '</td><td>' + (s.spec.clusterIP||'-') + '</td><td>' + s.spec.ports.map(p=>p.port).join(', ') + '</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无Services</div>';
+    }).catch(e => { $('servicesTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
+}
+
+function loadIngresses() {
+    fetch(API + '/ingresses').then(r => r.json()).then(ings => {
+        $('ingressesTable').innerHTML = ings.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>主机</th><th>路径</th></tr></thead><tbody>' + ings.map(i => '<tr><td>' + i.metadata.name + '</td><td>' + i.metadata.namespace + '</td><td>' + (i.spec.rules?i.spec.rules.map(r=>r.host).join(','):'-') + '</td><td>' + (i.spec.rules?i.spec.rules.map(r=>r.http?r.http.paths.map(p=>p.path).join(','):'-').join(','):'-') + '</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无Ingresses</div>';
+    }).catch(e => { $('ingressesTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
 }
 
 function loadConfigmaps() {
     fetch(API + '/configmaps').then(r => r.json()).then(cms => {
-        $('configmapsTable').innerHTML = cms.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>键数量</th></tr></thead>
-                <tbody>${cms.map(c => `<tr>
-                    <td>${c.metadata.name}</td><td>${c.metadata.namespace}</td>
-                    <td>${Object.keys(c.data || {}).length}</td>
-                </tr>`).join('')}</tbody>
-            </table>` : '<div class="loading">暂无ConfigMaps</div>';
-    }).catch(e => { $('configmapsTable').innerHTML = '<div class="error-msg">加载失败</div>'; });
+        $('configmapsTable').innerHTML = cms.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>键数量</th></tr></thead><tbody>' + cms.map(c => '<tr><td>' + c.metadata.name + '</td><td>' + c.metadata.namespace + '</td><td>' + Object.keys(c.data||{}).length + '</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无ConfigMaps</div>';
+    }).catch(e => { $('configmapsTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
 }
 
 function loadSecrets() {
     fetch(API + '/secrets').then(r => r.json()).then(secrets => {
-        $('secretsTable').innerHTML = secrets.length ? `
-            <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>键数量</th></tr></thead>
-                <tbody>${secrets.map(s => `<tr>
-                    <td>${s.metadata.name}</td><td>${s.metadata.namespace}</td>
-                    <td>${s.type}</td><td>${Object.keys(s.data || {}).length}</td>
-                </tr>`).join('')}</tbody>
-            </table>` : '<div class="loading">暂无Secrets</div>';
-    }).catch(e => { $('secretsTable').innerHTML = '<div class="error-msg">加载失败</div>'; });
+        $('secretsTable').innerHTML = secrets.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>键数量</th></tr></thead><tbody>' + secrets.map(s => '<tr><td>' + s.metadata.name + '</td><td>' + s.metadata.namespace + '</td><td>' + s.type + '</td><td>' + Object.keys(s.data||{}).length + '</td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无Secrets</div>';
+    }).catch(e => { $('secretsTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
+}
+
+function loadJobs() {
+    fetch(API + '/jobs').then(r => r.json()).then(jobs => {
+        $('jobsTable').innerHTML = jobs.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th></tr></thead><tbody>' + jobs.map(j => '<tr><td>' + j.metadata.name + '</td><td>' + j.metadata.namespace + '</td><td><span class="status running">Active</span></td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无Jobs</div>';
+    }).catch(e => { $('jobsTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
+}
+
+function loadCronjobs() {
+    fetch(API + '/cronjobs').then(r => r.json()).then(cjs => {
+        $('cronjobsTable').innerHTML = cjs.length ? '<table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>调度</th><th>状态</th></tr></thead><tbody>' + cjs.map(c => '<tr><td>' + c.metadata.name + '</td><td>' + c.metadata.namespace + '</td><td>' + (c.spec.schedule||'-') + '</td><td><span class="status running">' + (c.spec.suspend?'Suspended':'Active') + '</span></td></tr>').join('') + '</tbody></table>' : '<div class="loading">暂无CronJobs</div>';
+    }).catch(e => { $('cronjobsTable').innerHTML = '<div class="error-msg-box">加载失败</div>'; });
 }
 
 // Init
