@@ -3,120 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K8s Admin</title>
+    <title>K8s Admin - 运维平台</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #f1f5f9; min-height: 100vh; }
         
-        /* Login Page */
-        .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); }
-        .login-card { background: #1e293b; border-radius: 16px; padding: 48px; width: 100%; max-width: 400px; border: 1px solid #334155; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-        .login-title { text-align: center; margin-bottom: 32px; }
-        .login-title .icon { font-size: 48px; margin-bottom: 12px; }
-        .login-title h1 { font-size: 24px; font-weight: 600; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; margin-bottom: 8px; font-size: 14px; color: #94a3b8; }
-        .form-input { width: 100%; padding: 14px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: #f1f5f9; font-size: 14px; transition: border-color 0.2s; }
-        .form-input:focus { outline: none; border-color: #6366f1; }
-        .btn { width: 100%; padding: 14px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .btn-primary { background: #6366f1; color: #fff; }
-        .btn-primary:hover { background: #4f46e5; }
-        .btn-primary:disabled { background: #475569; cursor: not-allowed; }
-        .login-msg { margin-top: 16px; padding: 12px; border-radius: 8px; font-size: 13px; text-align: center; display: none; }
-        .login-msg.error { background: #7f1d1d; color: #fecaca; display: block; }
-        .login-msg.success { background: #14532d; color: #bbf7d0; display: block; }
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         
-        /* Dashboard */
-        .dashboard { display: none; min-height: 100vh; }
+        .login-container {
+            display: flex;
+            width: 900px;
+            height: 540px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        /* Left side - branding */
+        .login-left {
+            width: 400px;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .login-left .logo {
+            font-size: 72px;
+            margin-bottom: 24px;
+        }
+        
+        .login-left h1 {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .login-left p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .login-left .features {
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .login-left .feature {
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .login-left .feature span { color: #667eea; }
+        
+        /* Right side - form */
+        .login-right {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-right h2 {
+            color: #1a1a2e;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .login-right .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .form-row .form-group { flex: 1; }
+        
+        .captcha-input { flex: 1; }
+        
+        .captcha-img {
+            width: 120px;
+            height: 44px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
+        }
+        
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-msg {
+            background: #fff1f0;
+            border: 1px solid #ffccc7;
+            color: #cf1322;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .error-msg.show { display: block; }
+        
+        /* Dashboard styles */
+        .dashboard { display: none; }
         .dashboard.show { display: block; }
-        .header { background: #1e293b; border-bottom: 1px solid #334155; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
-        .header h1 { font-size: 18px; font-weight: 600; }
-        .header-right { display: flex; align-items: center; gap: 16px; }
-        .cluster-info { display: flex; align-items: center; gap: 12px; background: #0f172a; padding: 10px 16px; border-radius: 10px; border: 1px solid #334155; }
-        .cluster-info .name { font-weight: 600; font-size: 14px; }
-        .cluster-info .server { font-size: 12px; color: #94a3b8; }
-        .btn-logout { background: #dc2626; color: #fff; padding: 8px 16px; border-radius: 8px; border: none; font-size: 13px; cursor: pointer; }
-        .content { padding: 32px; }
         
-        /* Stats */
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 32px; }
-        .stat-card { background: #1e293b; border-radius: 12px; padding: 24px; border: 1px solid #334155; }
-        .stat-card .label { font-size: 14px; color: #94a3b8; margin-bottom: 8px; }
-        .stat-card .value { font-size: 32px; font-weight: 700; }
+        .header {
+            background: #1a1a2e;
+            padding: 0 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         
-        /* Nav */
-        .nav { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-        .nav-item { background: #1e293b; border: 1px solid #334155; padding: 12px 20px; border-radius: 10px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
-        .nav-item:hover { border-color: #6366f1; }
-        .nav-item.active { background: #6366f1; border-color: #6366f1; }
+        .header-left { display: flex; align-items: center; gap: 32px; }
+        .header h1 { color: #fff; font-size: 18px; font-weight: 600; }
         
-        /* Table */
-        .table-wrap { background: #1e293b; border-radius: 12px; border: 1px solid #334155; overflow: hidden; }
+        .nav { display: flex; gap: 4px; }
+        .nav-item {
+            color: rgba(255,255,255,0.6);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .nav-item.active { background: #667eea; color: #fff; }
+        
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .user-info { color: rgba(255,255,255,0.8); font-size: 14px; }
+        .btn-logout { 
+            background: rgba(255,255,255,0.1); 
+            color: #fff; 
+            border: none; 
+            padding: 8px 16px; 
+            border-radius: 6px; 
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-logout:hover { background: rgba(255,255,255,0.2); }
+        
+        .content { padding: 24px 32px; background: #f5f7fa; min-height: calc(100vh - 64px); }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .stat-card .label { color: #666; font-size: 13px; margin-bottom: 8px; }
+        .stat-card .value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
+        .stat-card .value.green { color: #52c41a; }
+        .stat-card .value.orange { color: #fa8c16; }
+        .stat-card .value.red { color: #f5222d; }
+        
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-header h3 { color: #1a1a2e; font-size: 16px; font-weight: 600; }
+        
         .table { width: 100%; border-collapse: collapse; }
-        .table th { background: #0f172a; padding: 14px 16px; text-align: left; font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase; }
-        .table td { padding: 14px 16px; font-size: 14px; border-top: 1px solid #334155; }
-        .table tr:hover td { background: #334155; }
+        .table th { 
+            background: #fafafa; 
+            padding: 12px 16px; 
+            text-align: left; 
+            font-size: 12px; 
+            font-weight: 600; 
+            color: #666;
+            text-transform: uppercase;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .table td { 
+            padding: 14px 16px; 
+            font-size: 14px; 
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .table tr:hover td { background: #fafafa; }
         
-        .status { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
-        .status.running { background: #14532d; color: #4ade80; }
-        .status.pending { background: #713f12; color: #fbbf24; }
-        .status.failed { background: #7f1d1d; color: #f87171; }
+        .status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .status.running { background: #f6ffed; color: #52c41a; }
+        .status.pending { background: #fffbe6; color: #fa8c16; }
+        .status.failed { background: #fff2f0; color: #f5222d; }
         
-        .loading { text-align: center; padding: 40px; color: #94a3b8; }
+        .loading { text-align: center; padding: 40px; color: #999; }
         
-        .error-msg { background: #7f1d1d; padding: 16px; border-radius: 8px; color: #fecaca; }
+        .page { display: none; }
+        .page.active { display: block; }
     </style>
 </head>
 <body>
 
 <!-- Login Page -->
-<div id="loginPage" class="login-wrap">
-    <div class="login-card">
-        <div class="login-title">
-            <div class="icon">☸️</div>
-            <h1>K8s Admin</h1>
+<div id="loginPage" class="login-container">
+    <div class="login-left">
+        <div class="logo">☸️</div>
+        <h1>K8s Admin</h1>
+        <p>Kubernetes 集群管理平台</p>
+        <div class="features">
+            <div class="feature">☸️ <span>集群管理</span> - 统一管理多集群</div>
+            <div class="feature">📊 <span>实时监控</span> - 资源状态一览无余</div>
+            <div class="feature">🔧 <span>快速操作</span> - 一键部署扩缩容</div>
+            <div class="feature">🛡️ <span>安全可控</span> - RBAC 权限管理</div>
         </div>
+    </div>
+    <div class="login-right">
+        <h2>用户登录</h2>
+        <p class="subtitle">请输入您的账号信息</p>
+        
+        <div id="errorMsg" class="error-msg"></div>
+        
         <div class="form-group">
-            <label class="form-label">用户名</label>
-            <input type="text" id="username" class="form-input" placeholder="admin" value="admin">
+            <label>用户名</label>
+            <input type="text" id="username" class="form-input" placeholder="请输入用户名" value="admin">
         </div>
+        
         <div class="form-group">
-            <label class="form-label">密码</label>
-            <input type="password" id="password" class="form-input" placeholder="••••••••" value="admin">
+            <label>密码</label>
+            <input type="password" id="password" class="form-input" placeholder="请输入密码" value="admin">
         </div>
-        <button id="loginBtn" class="btn btn-primary" onclick="doLogin()">登录</button>
-        <div id="loginMsg" class="login-msg"></div>
+        
+        <div class="form-row">
+            <div class="form-group captcha-input">
+                <label>验证码</label>
+                <input type="text" id="captcha" class="form-input" placeholder="验证码" maxlength="4">
+            </div>
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <div class="captcha-img" id="captchaImg" onclick="refreshCaptcha()">点击刷新</div>
+            </div>
+        </div>
+        
+        <button id="loginBtn" class="btn-login" onclick="doLogin()">登 录</button>
     </div>
 </div>
 
 <!-- Dashboard -->
 <div id="dashboardPage" class="dashboard">
     <div class="header">
-        <h1>☸️ K8s Admin</h1>
-        <div class="header-right">
-            <div class="cluster-info">
-                <div>
-                    <div class="name" id="clusterName">default</div>
-                    <div class="server">Kubernetes Cluster</div>
-                </div>
+        <div class="header-left">
+            <h1>☸️ K8s Admin</h1>
+            <div class="nav">
+                <div class="nav-item active" onclick="showPage('dashboard', this)">📊 概览</div>
+                <div class="nav-item" onclick="showPage('pods', this)">📦 Pods</div>
+                <div class="nav-item" onclick="showPage('deployments', this)">🚀 Deployment</div>
+                <div class="nav-item" onclick="showPage('services', this)">🌐 Service</div>
+                <div class="nav-item" onclick="showPage('nodes', this)">🖥️ 节点</div>
             </div>
-            <span id="userDisplay" style="color:#94a3b8;font-size:14px;"></span>
-            <button class="btn-logout" onclick="logout()">退出</button>
+        </div>
+        <div class="header-right">
+            <span class="user-info" id="userDisplay"></span>
+            <button class="btn-logout" onclick="logout()">退出登录</button>
         </div>
     </div>
     
     <div class="content">
-        <div class="nav">
-            <div class="nav-item active" onclick="showPage('dashboard')">📊 概览</div>
-            <div class="nav-item" onclick="showPage('pods')">📦 Pods</div>
-            <div class="nav-item" onclick="showPage('deployments')">🚀 Deployments</div>
-            <div class="nav-item" onclick="showPage('services')">🌐 Services</div>
-            <div class="nav-item" onclick="showPage('nodes')">🖥️ Nodes</div>
+        <!-- Dashboard Page -->
+        <div id="page-dashboard" class="page active">
+            <div class="stats" id="statsGrid"></div>
+            <div class="card">
+                <div class="card-header"><h3>📦 最近 Pods</h3></div>
+                <div id="recentPods"></div>
+            </div>
         </div>
         
-        <div id="pageContent">
-            <div class="stats" id="statsGrid"></div>
-            <div id="dataTable"></div>
+        <!-- Pods Page -->
+        <div id="page-pods" class="page">
+            <div class="card">
+                <div class="card-header"><h3>📦 Pod 列表</h3></div>
+                <div id="podsTable"></div>
+            </div>
+        </div>
+        
+        <!-- Deployments Page -->
+        <div id="page-deployments" class="page">
+            <div class="card">
+                <div class="card-header"><h3>🚀 Deployment 列表</h3></div>
+                <div id="deploymentsTable"></div>
+            </div>
+        </div>
+        
+        <!-- Services Page -->
+        <div id="page-services" class="page">
+            <div class="card">
+                <div class="card-header"><h3>🌐 Service 列表</h3></div>
+                <div id="servicesTable"></div>
+            </div>
+        </div>
+        
+        <!-- Nodes Page -->
+        <div id="page-nodes" class="page">
+            <div class="card">
+                <div class="card-header"><h3>🖥️ 节点列表</h3></div>
+                <div id="nodesTable"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -126,22 +415,44 @@ const API = '/api/v1';
 
 function $(id) { return document.getElementById(id); }
 
+// Simple captcha - just generate 4 random chars
+let currentCaptcha = '';
+function refreshCaptcha() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for(let i = 0; i < 4; i++) {
+        code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    currentCaptcha = code;
+    $('captchaImg').textContent = code;
+    $('captchaImg').style.cssText = 'color:#667eea;font-weight:700;letter-spacing:3px;';
+}
+refreshCaptcha();
+
 function doLogin() {
-    const username = $('username').value;
+    const username = $('username').value.trim();
     const password = $('password').value;
+    const captcha = $('captcha').value.trim().toUpperCase();
     const btn = $('loginBtn');
-    const msg = $('loginMsg');
+    const errorMsg = $('errorMsg');
     
     if (!username || !password) {
-        msg.textContent = '请输入用户名和密码';
-        msg.className = 'login-msg error';
+        errorMsg.textContent = '请输入用户名和密码';
+        errorMsg.classList.add('show');
         return;
     }
     
+    // Captcha validation (case insensitive)
+    if (captcha !== currentCaptcha) {
+        errorMsg.textContent = '验证码错误';
+        errorMsg.classList.add('show');
+        refreshCaptcha();
+        return;
+    }
+    
+    errorMsg.classList.remove('show');
     btn.disabled = true;
     btn.textContent = '登录中...';
-    msg.className = 'login-msg';
-    msg.textContent = '';
     
     fetch(API + '/auth/login', {
         method: 'POST',
@@ -154,24 +465,29 @@ function doLogin() {
             localStorage.setItem('token', data.token);
             localStorage.setItem('username', data.username);
             localStorage.setItem('role', data.role);
-            localStorage.setItem('ks_admin_token', data.token); // 兼容两种key
-            localStorage.setItem('ks_admin_user', data.username);
-            localStorage.setItem('ks_admin_role', data.role);
             showDashboard(data);
         } else {
-            msg.textContent = '登录失败: ' + (data.error || '未知错误');
-            msg.className = 'login-msg error';
+            errorMsg.textContent = '登录失败: ' + (data.error || '未知错误');
+            errorMsg.classList.add('show');
             btn.disabled = false;
-            btn.textContent = '登录';
+            btn.textContent = '登 录';
+            refreshCaptcha();
         }
     })
     .catch(e => {
-        msg.textContent = '错误: ' + e.message;
-        msg.className = 'login-msg error';
+        errorMsg.textContent = '网络错误: ' + e.message;
+        errorMsg.classList.add('show');
         btn.disabled = false;
-        btn.textContent = '登录';
+        btn.textContent = '登 录';
     });
 }
+
+// Enter key to submit
+document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && $('loginPage').style.display !== 'none') {
+        doLogin();
+    }
+});
 
 function showDashboard(userData) {
     $('loginPage').style.display = 'none';
@@ -184,15 +500,14 @@ function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('role');
-    localStorage.removeItem('ks_admin_token');
-    localStorage.removeItem('ks_admin_user');
-    localStorage.removeItem('ks_admin_role');
     location.reload();
 }
 
-function showPage(page) {
-    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-    event.target.classList.add('active');
+function showPage(page, el) {
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+    if (el) el.classList.add('active');
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    $('page-' + page).classList.add('active');
     
     switch(page) {
         case 'dashboard': loadDashboard(); break;
@@ -218,35 +533,42 @@ function loadDashboard() {
         $('statsGrid').innerHTML = `
             <div class="stat-card"><div class="label">集群版本</div><div class="value" style="font-size:20px">${cluster.version || 'N/A'}</div></div>
             <div class="stat-card"><div class="label">命名空间</div><div class="value">${namespaces.length}</div></div>
-            <div class="stat-card"><div class="label">节点</div><div class="value">${nodes.length}</div></div>
-            <div class="stat-card"><div class="label">总 Pods</div><div class="value">${pods.length}</div></div>
-            <div class="stat-card"><div class="label">Running</div><div class="value" style="color:#4ade80">${running}</div></div>
-            <div class="stat-card"><div class="label">Pending</div><div class="value" style="color:#fbbf24">${pending}</div></div>
-            <div class="stat-card"><div class="label">Failed</div><div class="value" style="color:#f87171">${failed}</div></div>
+            <div class="stat-card"><div class="label">节点数</div><div class="value">${nodes.length}</div></div>
+            <div class="stat-card"><div class="label">Pod总数</div><div class="value">${pods.length}</div></div>
+            <div class="stat-card"><div class="label">Running</div><div class="value green">${running}</div></div>
+            <div class="stat-card"><div class="label">Pending</div><div class="value orange">${pending}</div></div>
+            <div class="stat-card"><div class="label">Failed</div><div class="value red">${failed}</div></div>
         `;
-        $('dataTable').innerHTML = '';
+        
+        // Recent pods
+        const recentPods = pods.slice(0, 10);
+        $('recentPods').innerHTML = recentPods.length ? `
+            <table class="table">
+                <thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th></tr></thead>
+                <tbody>
+                    ${recentPods.map(p => `<tr>
+                        <td>${p.metadata.name}</td>
+                        <td>${p.metadata.namespace}</td>
+                        <td><span class="status ${p.status.phase.toLowerCase()}">${p.status.phase}</span></td>
+                        <td>${p.spec.nodeName || '-'}</td>
+                    </tr>`).join('')}
+                </tbody>
+            </table>` : '<div class="loading">暂无数据</div>';
     })
     .catch(e => {
-        $('statsGrid').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+        $('statsGrid').innerHTML = '<div class="loading">加载失败: ' + e.message + '</div>';
     });
 }
 
 function loadPods() {
-    $('statsGrid').innerHTML = '';
     fetch(API + '/pods')
     .then(r => r.json())
     .then(pods => {
-        if (!pods.length) {
-            $('dataTable').innerHTML = '<div class="loading">暂无 Pods</div>';
-            return;
-        }
-        $('dataTable').innerHTML = `
-        <div class="table-wrap">
+        $('podsTable').innerHTML = pods.length ? `
             <table class="table">
                 <thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead>
                 <tbody>
-                    ${pods.map(p => `
-                    <tr>
+                    ${pods.map(p => `<tr>
                         <td>${p.metadata.name}</td>
                         <td>${p.metadata.namespace}</td>
                         <td><span class="status ${p.status.phase.toLowerCase()}">${p.status.phase}</span></td>
@@ -254,27 +576,20 @@ function loadPods() {
                         <td>${new Date(p.metadata.creationTimestamp).toLocaleString()}</td>
                     </tr>`).join('')}
                 </tbody>
-            </table>
-        </div>`;
+            </table>` : '<div class="loading">暂无 Pods</div>';
     })
     .catch(e => {
-        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+        $('podsTable').innerHTML = '<div class="loading">加载失败: ' + e.message + '</div>';
     });
 }
 
 function loadDeployments() {
-    $('statsGrid').innerHTML = '';
     fetch(API + '/deployments')
     .then(r => r.json())
     .then(deps => {
-        if (!deps.length) {
-            $('dataTable').innerHTML = '<div class="loading">暂无 Deployments</div>';
-            return;
-        }
-        $('dataTable').innerHTML = `
-        <div class="table-wrap">
+        $('deploymentsTable').innerHTML = deps.length ? `
             <table class="table">
-                <thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>Up-to-date</th><th>Available</th></tr></thead>
+                <thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>可用</th><th>创建时间</th></tr></thead>
                 <tbody>
                     ${deps.map(d => {
                         const ready = d.status.readyReplicas || 0;
@@ -283,30 +598,23 @@ function loadDeployments() {
                             <td>${d.metadata.name}</td>
                             <td>${d.metadata.namespace}</td>
                             <td><span class="status ${ready === desired ? 'running' : 'pending'}">${ready}/${desired}</span></td>
-                            <td>${d.status.updatedReplicas || 0}</td>
                             <td>${d.status.availableReplicas || 0}</td>
+                            <td>${new Date(d.metadata.creationTimestamp).toLocaleString()}</td>
                         </tr>`;
                     }).join('')}
                 </tbody>
-            </table>
-        </div>`;
+            </table>` : '<div class="loading">暂无 Deployments</div>';
     })
     .catch(e => {
-        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+        $('deploymentsTable').innerHTML = '<div class="loading">加载失败: ' + e.message + '</div>';
     });
 }
 
 function loadServices() {
-    $('statsGrid').innerHTML = '';
     fetch(API + '/services')
     .then(r => r.json())
     .then(svcs => {
-        if (!svcs.length) {
-            $('dataTable').innerHTML = '<div class="loading">暂无 Services</div>';
-            return;
-        }
-        $('dataTable').innerHTML = `
-        <div class="table-wrap">
+        $('servicesTable').innerHTML = svcs.length ? `
             <table class="table">
                 <thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>ClusterIP</th><th>端口</th></tr></thead>
                 <tbody>
@@ -318,25 +626,18 @@ function loadServices() {
                         <td>${s.spec.ports.map(p => p.port).join(', ')}</td>
                     </tr>`).join('')}
                 </tbody>
-            </table>
-        </div>`;
+            </table>` : '<div class="loading">暂无 Services</div>';
     })
     .catch(e => {
-        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+        $('servicesTable').innerHTML = '<div class="loading">加载失败: ' + e.message + '</div>';
     });
 }
 
 function loadNodes() {
-    $('statsGrid').innerHTML = '';
     fetch(API + '/nodes')
     .then(r => r.json())
     .then(nodes => {
-        if (!nodes.length) {
-            $('dataTable').innerHTML = '<div class="loading">暂无 Nodes</div>';
-            return;
-        }
-        $('dataTable').innerHTML = `
-        <div class="table-wrap">
+        $('nodesTable').innerHTML = nodes.length ? `
             <table class="table">
                 <thead><tr><th>名称</th><th>状态</th><th>角色</th><th>版本</th><th>CPU</th><th>内存</th></tr></thead>
                 <tbody>
@@ -356,19 +657,18 @@ function loadNodes() {
                         </tr>`;
                     }).join('')}
                 </tbody>
-            </table>
-        </div>`;
+            </table>` : '<div class="loading">暂无 Nodes</div>';
     })
     .catch(e => {
-        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+        $('nodesTable').innerHTML = '<div class="loading">加载失败: ' + e.message + '</div>';
     });
 }
 
 // Init - check if already logged in
-const savedToken = localStorage.getItem('token') || localStorage.getItem('ks_admin_token');
+const savedToken = localStorage.getItem('token');
 if (savedToken) {
-    const username = localStorage.getItem('username') || localStorage.getItem('ks_admin_user');
-    const role = localStorage.getItem('role') || localStorage.getItem('ks_admin_role');
+    const username = localStorage.getItem('username');
+    const role = localStorage.getItem('role');
     showDashboard({username, role, token: savedToken});
 }
 </script>
