@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8s Admin</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #f1f5f9; min-height: 100vh; }
+        
+        /* Login Page */
+        .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); }
+        .login-card { background: #1e293b; border-radius: 16px; padding: 48px; width: 100%; max-width: 400px; border: 1px solid #334155; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
+        .login-title { text-align: center; margin-bottom: 32px; }
+        .login-title .icon { font-size: 48px; margin-bottom: 12px; }
+        .login-title h1 { font-size: 24px; font-weight: 600; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-size: 14px; color: #94a3b8; }
+        .form-input { width: 100%; padding: 14px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 10px; color: #f1f5f9; font-size: 14px; transition: border-color 0.2s; }
+        .form-input:focus { outline: none; border-color: #6366f1; }
+        .btn { width: 100%; padding: 14px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: #6366f1; color: #fff; }
+        .btn-primary:hover { background: #4f46e5; }
+        .btn-primary:disabled { background: #475569; cursor: not-allowed; }
+        .login-msg { margin-top: 16px; padding: 12px; border-radius: 8px; font-size: 13px; text-align: center; display: none; }
+        .login-msg.error { background: #7f1d1d; color: #fecaca; display: block; }
+        .login-msg.success { background: #14532d; color: #bbf7d0; display: block; }
+        
+        /* Dashboard */
+        .dashboard { display: none; min-height: 100vh; }
+        .dashboard.show { display: block; }
+        .header { background: #1e293b; border-bottom: 1px solid #334155; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 50; }
+        .header h1 { font-size: 18px; font-weight: 600; }
+        .header-right { display: flex; align-items: center; gap: 16px; }
+        .cluster-info { display: flex; align-items: center; gap: 12px; background: #0f172a; padding: 10px 16px; border-radius: 10px; border: 1px solid #334155; }
+        .cluster-info .name { font-weight: 600; font-size: 14px; }
+        .cluster-info .server { font-size: 12px; color: #94a3b8; }
+        .btn-logout { background: #dc2626; color: #fff; padding: 8px 16px; border-radius: 8px; border: none; font-size: 13px; cursor: pointer; }
+        .content { padding: 32px; }
+        
+        /* Stats */
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 32px; }
+        .stat-card { background: #1e293b; border-radius: 12px; padding: 24px; border: 1px solid #334155; }
+        .stat-card .label { font-size: 14px; color: #94a3b8; margin-bottom: 8px; }
+        .stat-card .value { font-size: 32px; font-weight: 700; }
+        
+        /* Nav */
+        .nav { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+        .nav-item { background: #1e293b; border: 1px solid #334155; padding: 12px 20px; border-radius: 10px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .nav-item:hover { border-color: #6366f1; }
+        .nav-item.active { background: #6366f1; border-color: #6366f1; }
+        
+        /* Table */
+        .table-wrap { background: #1e293b; border-radius: 12px; border: 1px solid #334155; overflow: hidden; }
+        .table { width: 100%; border-collapse: collapse; }
+        .table th { background: #0f172a; padding: 14px 16px; text-align: left; font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase; }
+        .table td { padding: 14px 16px; font-size: 14px; border-top: 1px solid #334155; }
+        .table tr:hover td { background: #334155; }
+        
+        .status { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+        .status.running { background: #14532d; color: #4ade80; }
+        .status.pending { background: #713f12; color: #fbbf24; }
+        .status.failed { background: #7f1d1d; color: #f87171; }
+        
+        .loading { text-align: center; padding: 40px; color: #94a3b8; }
+        
+        .error-msg { background: #7f1d1d; padding: 16px; border-radius: 8px; color: #fecaca; }
+    </style>
+</head>
+<body>
+
+<!-- Login Page -->
+<div id="loginPage" class="login-wrap">
+    <div class="login-card">
+        <div class="login-title">
+            <div class="icon">☸️</div>
+            <h1>K8s Admin</h1>
+        </div>
+        <div class="form-group">
+            <label class="form-label">用户名</label>
+            <input type="text" id="username" class="form-input" placeholder="admin" value="admin">
+        </div>
+        <div class="form-group">
+            <label class="form-label">密码</label>
+            <input type="password" id="password" class="form-input" placeholder="••••••••" value="admin">
+        </div>
+        <button id="loginBtn" class="btn btn-primary" onclick="doLogin()">登录</button>
+        <div id="loginMsg" class="login-msg"></div>
+    </div>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboardPage" class="dashboard">
+    <div class="header">
+        <h1>☸️ K8s Admin</h1>
+        <div class="header-right">
+            <div class="cluster-info">
+                <div>
+                    <div class="name" id="clusterName">default</div>
+                    <div class="server">Kubernetes Cluster</div>
+                </div>
+            </div>
+            <span id="userDisplay" style="color:#94a3b8;font-size:14px;"></span>
+            <button class="btn-logout" onclick="logout()">退出</button>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="nav">
+            <div class="nav-item active" onclick="showPage('dashboard')">📊 概览</div>
+            <div class="nav-item" onclick="showPage('pods')">📦 Pods</div>
+            <div class="nav-item" onclick="showPage('deployments')">🚀 Deployments</div>
+            <div class="nav-item" onclick="showPage('services')">🌐 Services</div>
+            <div class="nav-item" onclick="showPage('nodes')">🖥️ Nodes</div>
+        </div>
+        
+        <div id="pageContent">
+            <div class="stats" id="statsGrid"></div>
+            <div id="dataTable"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const API = '/api/v1';
+
+function $(id) { return document.getElementById(id); }
+
+function doLogin() {
+    const username = $('username').value;
+    const password = $('password').value;
+    const btn = $('loginBtn');
+    const msg = $('loginMsg');
+    
+    if (!username || !password) {
+        msg.textContent = '请输入用户名和密码';
+        msg.className = 'login-msg error';
+        return;
+    }
+    
+    btn.disabled = true;
+    btn.textContent = '登录中...';
+    msg.className = 'login-msg';
+    msg.textContent = '';
+    
+    fetch(API + '/auth/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, password})
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('role', data.role);
+            localStorage.setItem('ks_admin_token', data.token); // 兼容两种key
+            localStorage.setItem('ks_admin_user', data.username);
+            localStorage.setItem('ks_admin_role', data.role);
+            showDashboard(data);
+        } else {
+            msg.textContent = '登录失败: ' + (data.error || '未知错误');
+            msg.className = 'login-msg error';
+            btn.disabled = false;
+            btn.textContent = '登录';
+        }
+    })
+    .catch(e => {
+        msg.textContent = '错误: ' + e.message;
+        msg.className = 'login-msg error';
+        btn.disabled = false;
+        btn.textContent = '登录';
+    });
+}
+
+function showDashboard(userData) {
+    $('loginPage').style.display = 'none';
+    $('dashboardPage').classList.add('show');
+    $('userDisplay').textContent = userData.username + ' (' + userData.role + ')';
+    loadDashboard();
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    localStorage.removeItem('ks_admin_token');
+    localStorage.removeItem('ks_admin_user');
+    localStorage.removeItem('ks_admin_role');
+    location.reload();
+}
+
+function showPage(page) {
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    switch(page) {
+        case 'dashboard': loadDashboard(); break;
+        case 'pods': loadPods(); break;
+        case 'deployments': loadDeployments(); break;
+        case 'services': loadServices(); break;
+        case 'nodes': loadNodes(); break;
+    }
+}
+
+function loadDashboard() {
+    Promise.all([
+        fetch(API + '/pods').then(r => r.json()),
+        fetch(API + '/namespaces').then(r => r.json()),
+        fetch(API + '/nodes').then(r => r.json()),
+        fetch(API + '/cluster').then(r => r.json())
+    ])
+    .then(([pods, namespaces, nodes, cluster]) => {
+        const running = pods.filter(p => p.status && p.status.phase === 'Running').length;
+        const pending = pods.filter(p => p.status && p.status.phase === 'Pending').length;
+        const failed = pods.filter(p => p.status && p.status.phase === 'Failed').length;
+        
+        $('statsGrid').innerHTML = `
+            <div class="stat-card"><div class="label">集群版本</div><div class="value" style="font-size:20px">${cluster.version || 'N/A'}</div></div>
+            <div class="stat-card"><div class="label">命名空间</div><div class="value">${namespaces.length}</div></div>
+            <div class="stat-card"><div class="label">节点</div><div class="value">${nodes.length}</div></div>
+            <div class="stat-card"><div class="label">总 Pods</div><div class="value">${pods.length}</div></div>
+            <div class="stat-card"><div class="label">Running</div><div class="value" style="color:#4ade80">${running}</div></div>
+            <div class="stat-card"><div class="label">Pending</div><div class="value" style="color:#fbbf24">${pending}</div></div>
+            <div class="stat-card"><div class="label">Failed</div><div class="value" style="color:#f87171">${failed}</div></div>
+        `;
+        $('dataTable').innerHTML = '';
+    })
+    .catch(e => {
+        $('statsGrid').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+    });
+}
+
+function loadPods() {
+    $('statsGrid').innerHTML = '';
+    fetch(API + '/pods')
+    .then(r => r.json())
+    .then(pods => {
+        if (!pods.length) {
+            $('dataTable').innerHTML = '<div class="loading">暂无 Pods</div>';
+            return;
+        }
+        $('dataTable').innerHTML = `
+        <div class="table-wrap">
+            <table class="table">
+                <thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead>
+                <tbody>
+                    ${pods.map(p => `
+                    <tr>
+                        <td>${p.metadata.name}</td>
+                        <td>${p.metadata.namespace}</td>
+                        <td><span class="status ${p.status.phase.toLowerCase()}">${p.status.phase}</span></td>
+                        <td>${p.spec.nodeName || '-'}</td>
+                        <td>${new Date(p.metadata.creationTimestamp).toLocaleString()}</td>
+                    </tr>`).join('')}
+                </tbody>
+            </table>
+        </div>`;
+    })
+    .catch(e => {
+        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+    });
+}
+
+function loadDeployments() {
+    $('statsGrid').innerHTML = '';
+    fetch(API + '/deployments')
+    .then(r => r.json())
+    .then(deps => {
+        if (!deps.length) {
+            $('dataTable').innerHTML = '<div class="loading">暂无 Deployments</div>';
+            return;
+        }
+        $('dataTable').innerHTML = `
+        <div class="table-wrap">
+            <table class="table">
+                <thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>Up-to-date</th><th>Available</th></tr></thead>
+                <tbody>
+                    ${deps.map(d => {
+                        const ready = d.status.readyReplicas || 0;
+                        const desired = d.spec.replicas || 0;
+                        return `<tr>
+                            <td>${d.metadata.name}</td>
+                            <td>${d.metadata.namespace}</td>
+                            <td><span class="status ${ready === desired ? 'running' : 'pending'}">${ready}/${desired}</span></td>
+                            <td>${d.status.updatedReplicas || 0}</td>
+                            <td>${d.status.availableReplicas || 0}</td>
+                        </tr>`;
+                    }).join('')}
+                </tbody>
+            </table>
+        </div>`;
+    })
+    .catch(e => {
+        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+    });
+}
+
+function loadServices() {
+    $('statsGrid').innerHTML = '';
+    fetch(API + '/services')
+    .then(r => r.json())
+    .then(svcs => {
+        if (!svcs.length) {
+            $('dataTable').innerHTML = '<div class="loading">暂无 Services</div>';
+            return;
+        }
+        $('dataTable').innerHTML = `
+        <div class="table-wrap">
+            <table class="table">
+                <thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>ClusterIP</th><th>端口</th></tr></thead>
+                <tbody>
+                    ${svcs.map(s => `<tr>
+                        <td>${s.metadata.name}</td>
+                        <td>${s.metadata.namespace}</td>
+                        <td>${s.spec.type}</td>
+                        <td>${s.spec.clusterIP || '-'}</td>
+                        <td>${s.spec.ports.map(p => p.port).join(', ')}</td>
+                    </tr>`).join('')}
+                </tbody>
+            </table>
+        </div>`;
+    })
+    .catch(e => {
+        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+    });
+}
+
+function loadNodes() {
+    $('statsGrid').innerHTML = '';
+    fetch(API + '/nodes')
+    .then(r => r.json())
+    .then(nodes => {
+        if (!nodes.length) {
+            $('dataTable').innerHTML = '<div class="loading">暂无 Nodes</div>';
+            return;
+        }
+        $('dataTable').innerHTML = `
+        <div class="table-wrap">
+            <table class="table">
+                <thead><tr><th>名称</th><th>状态</th><th>角色</th><th>版本</th><th>CPU</th><th>内存</th></tr></thead>
+                <tbody>
+                    ${nodes.map(n => {
+                        const ready = n.status.conditions.find(c => c.type === 'Ready');
+                        const status = ready && ready.status === 'True' ? 'Ready' : 'NotReady';
+                        const role = n.metadata.labels['node-role.kubernetes.io/control-plane'] ? 'control-plane' : 'worker';
+                        const cpu = n.status.capacity.cpu;
+                        const mem = Math.round(parseInt(n.status.capacity.memory) / 1024 / 1024 / 1024) + 'Gi';
+                        return `<tr>
+                            <td>${n.metadata.name}</td>
+                            <td><span class="status ${status === 'Ready' ? 'running' : 'failed'}">${status}</span></td>
+                            <td>${role}</td>
+                            <td>${n.status.nodeInfo.kubeletVersion}</td>
+                            <td>${cpu}</td>
+                            <td>${mem}</td>
+                        </tr>`;
+                    }).join('')}
+                </tbody>
+            </table>
+        </div>`;
+    })
+    .catch(e => {
+        $('dataTable').innerHTML = '<div class="error-msg">加载失败: ' + e.message + '</div>';
+    });
+}
+
+// Init - check if already logged in
+const savedToken = localStorage.getItem('token') || localStorage.getItem('ks_admin_token');
+if (savedToken) {
+    const username = localStorage.getItem('username') || localStorage.getItem('ks_admin_user');
+    const role = localStorage.getItem('role') || localStorage.getItem('ks_admin_role');
+    showDashboard({username, role, token: savedToken});
+}
+</script>
+</body>
+</html>

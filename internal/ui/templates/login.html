@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录测试</title>
+    <style>
+        body { font-family: Arial; background: #0f172a; color: white; padding: 40px; }
+        .box { background: #1e293b; padding: 30px; border-radius: 12px; max-width: 400px; margin: 0 auto; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; margin-top: 16px; border-radius: 8px; border: none; background: #6366f1; color: white; cursor: pointer; font-size: 16px; }
+        button:hover { background: #4f46e5; }
+        button:disabled { background: #475569; cursor: not-allowed; }
+        #result { margin-top: 20px; padding: 16px; border-radius: 8px; word-break: break-all; font-size: 12px; }
+        .success { background: #166534; }
+        .error { background: #991b1b; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>☸️ K8s Admin 登录</h2>
+        <input type="text" id="username" placeholder="用户名" value="admin">
+        <input type="password" id="password" placeholder="密码" value="admin">
+        <button id="loginBtn" onclick="doLogin()">登录</button>
+        <div id="result"></div>
+    </div>
+    
+    <script>
+        async function doLogin() {
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            const btn = document.getElementById('loginBtn');
+            const result = document.getElementById('result');
+            
+            result.textContent = '正在连接...';
+            result.className = '';
+            btn.disabled = true;
+            
+            try {
+                const res = await fetch('/api/v1/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: u, password: p })
+                });
+                
+                const data = await res.json();
+                result.textContent = JSON.stringify(data, null, 2);
+                result.className = data.token ? 'success' : 'error';
+                
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', data.username);
+                    localStorage.setItem('role', data.role);
+                    result.textContent += '\n\n✅ 登录成功！Token已保存。\n刷新页面跳转到主页。';
+                    setTimeout(() => { window.location.href = '/'; }, 2000);
+                }
+            } catch (e) {
+                result.textContent = '错误: ' + e.message;
+                result.className = 'error';
+            }
+            
+            btn.disabled = false;
+        }
+    </script>
+</body>
+</html>
