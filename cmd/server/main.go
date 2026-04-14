@@ -133,6 +133,37 @@ func main() {
 
 		// WebSocket Terminal
 		api.GET("/ws/terminal", h.WebSocketTerminal)
+		
+		// Host Management
+		api.GET("/hosts", h.GetHosts)
+		api.POST("/hosts", h.CreateHost)
+		api.DELETE("/hosts/:id", h.DeleteHost)
+		api.GET("/hosts/:id/ping", h.PingHost)
+		api.GET("/hosts/:id/metrics", h.GetHostMetrics)
+		api.POST("/hosts/:id/collect", h.CollectHostMetrics)
+		api.POST("/hosts/ssh", h.SSHTerminal)
+		
+		// Host Groups
+		api.GET("/host-groups", h.GetHostGroups)
+		api.POST("/host-groups", h.CreateHostGroup)
+		api.DELETE("/host-groups/:id", h.DeleteHostGroup)
+		
+		// MySQL
+		api.GET("/mysql", h.GetMySQLConnections)
+		api.POST("/mysql", h.CreateMySQLConnection)
+		api.DELETE("/mysql/:id", h.DeleteMySQLConnection)
+		api.GET("/mysql/:id/test", h.TestMySQLConnection)
+		api.POST("/mysql/:id/query", h.QueryMySQL)
+		
+		// Redis
+		api.GET("/redis", h.GetRedisConnections)
+		api.POST("/redis", h.CreateRedisConnection)
+		api.DELETE("/redis/:id", h.DeleteRedisConnection)
+		api.GET("/redis/:id/test", h.TestRedisConnection)
+		api.POST("/redis/:id/query", h.QueryRedis)
+		
+		// Operation Logs
+		api.GET("/logs", h.GetOperationLogs)
 	}
 
 	log.Printf("K8s Admin starting on %s", *addr)

@@ -7,8 +7,6 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif; }
-        
-        /* Login */
         .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
         .login-box { width: 420px; background: #fff; border-radius: 16px; padding: 48px 40px; box-shadow: 0 25px 80px rgba(0,0,0,0.4); }
         .login-box h1 { text-align: center; margin-bottom: 32px; font-size: 28px; color: #1a1a2e; font-weight: 700; }
@@ -25,41 +23,29 @@
         .btn-login:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .error-msg { background: #fff2f0; border: 1px solid #ffccc7; color: #cf1322; padding: 14px; border-radius: 10px; margin-bottom: 20px; font-size: 14px; display: none; }
         .error-msg.show { display: block; }
-        
-        /* Main Layout */
         .main { display: none; height: 100vh; }
         .main.show { display: flex; }
-        
-        /* Sidebar */
         .sidebar { width: 240px; background: #1a1a2e; display: flex; flex-direction: column; }
         .sidebar-header { height: 70px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.08); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .sidebar-header h1 { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 1px; }
-        
         .sidebar-nav { flex: 1; overflow-y: auto; padding: 16px 0; }
         .sidebar-nav::-webkit-scrollbar { width: 4px; }
         .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
-        
         .menu-title { padding: 12px 24px 6px; color: rgba(255,255,255,0.4); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-        
         .menu-item { display: flex; align-items: center; padding: 12px 24px; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s; font-size: 14px; gap: 12px; border-left: 3px solid transparent; }
         .menu-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
         .menu-item.active { background: rgba(102,126,234,0.2); color: #fff; border-left-color: #667eea; }
         .menu-item .icon { font-size: 18px; width: 24px; text-align: center; }
-        
         .sidebar-footer { padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.08); }
         .user-info { color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
         .user-info .avatar { width: 32px; height: 32px; background: #667eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
         .logout-btn { width: 100%; padding: 10px; background: rgba(255,255,255,0.08); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
         .logout-btn:hover { background: rgba(255,255,255,0.15); }
-        
-        /* Content */
         .content { flex: 1; background: #f0f2f5; overflow-y: auto; }
         .content-header { background: #fff; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10; }
         .content-header h2 { color: #333; font-size: 18px; font-weight: 600; }
         .breadcrumb { color: #999; font-size: 13px; }
         .content-body { padding: 24px; }
-        
-        /* Stats Grid */
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 24px; }
         .stat-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 16px; }
         .stat-card .icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; }
@@ -70,8 +56,6 @@
         .stat-card .info .value.blue { color: #667eea; }
         .stat-card .info .value.orange { color: #fa8c16; }
         .stat-card .info .value.red { color: #f5222d; }
-        
-        /* Cards */
         .card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #f0f0f0; }
         .card-header h3 { color: #333; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
@@ -83,36 +67,27 @@
         .btn-default:hover { background: #e8e8e8; }
         .btn-danger { background: #ff4d4f; color: #fff; }
         .btn-danger:hover { background: #ff3333; }
-        
-        /* Table */
+        .btn-success { background: #52c41a; color: #fff; }
+        .btn-success:hover { background: #49aa19; }
         .table-wrap { overflow-x: auto; }
         .table { width: 100%; border-collapse: collapse; }
         .table th { background: #fafafa; padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; }
         .table td { padding: 14px 16px; font-size: 14px; color: #333; border-bottom: 1px solid #f0f0f0; }
         .table tr:hover td { background: #fafafa; }
         .table tr:last-child td { border-bottom: none; }
-        
         .status { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; }
-        .status.running { background: #f6ffed; color: #52c41a; }
+        .status.running, .status.online { background: #f6ffed; color: #52c41a; }
         .status.pending { background: #fffbe6; color: #fa8c16; }
-        .status.failed, .status.error { background: #fff2f0; color: #f5222d; }
+        .status.failed, .status.error, .status.offline { background: #fff2f0; color: #f5222d; }
         .status.success { background: #e6f7ff; color: #1890ff; }
-        .status.offline { background: #f5f5f5; color: #999; }
-        
         .loading { text-align: center; padding: 60px; color: #999; font-size: 14px; }
         .empty { text-align: center; padding: 60px; color: #999; }
         .empty .icon { font-size: 48px; margin-bottom: 16px; }
-        
         .page { display: none; }
         .page.active { display: block; }
-        
-        /* Form Elements */
         .form-row { display: flex; gap: 16px; margin-bottom: 16px; }
         .form-row .form-group { flex: 1; }
-        .form-group.full { width: 100%; }
         textarea.form-input { min-height: 120px; resize: vertical; }
-        
-        /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 1000; }
         .modal-overlay.show { display: flex; }
         .modal { background: #fff; border-radius: 16px; width: 600px; max-width: 90%; max-height: 90vh; overflow: hidden; }
@@ -122,39 +97,22 @@
         .modal-close:hover { background: #e0e0e0; }
         .modal-body { padding: 24px; max-height: 60vh; overflow-y: auto; }
         .modal-footer { padding: 16px 24px; border-top: 1px solid #eee; display: flex; justify-content: flex-end; gap: 12px; }
-        
-        /* Terminal */
         .terminal-box { background: #1a1a2e; border-radius: 10px; padding: 20px; font-family: 'Monaco', 'Menlo', monospace; color: #0f0; font-size: 13px; min-height: 300px; }
         .terminal-output { white-space: pre-wrap; word-break: break-all; }
-        
-        /* Search */
         .search-box { display: flex; gap: 12px; margin-bottom: 20px; }
         .search-box input { flex: 1; padding: 10px 16px; border: 1px solid #e0e0e0; border-radius: 8px; font-size: 14px; }
         .search-box input:focus { outline: none; border-color: #667eea; }
-        
-        /* Tag */
-        .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; background: #f0f0f0; color: #666; margin-right: 8px; }
-        
-        /* Pagination */
-        .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
-        .pagination button { padding: 8px 14px; border: 1px solid #e0e0e0; background: #fff; border-radius: 6px; cursor: pointer; }
-        .pagination button:hover { background: #f5f5f5; }
-        .pagination button.active { background: #667eea; color: #fff; border-color: #667eea; }
-        .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
-        
-        /* Quick Stats */
         .quick-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
         .quick-stat { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 12px; color: #fff; text-align: center; }
         .quick-stat .value { font-size: 32px; font-weight: 700; }
         .quick-stat .label { font-size: 13px; opacity: 0.8; margin-top: 4px; }
-        
-        /* Chart placeholder */
         .chart-placeholder { background: #fafafa; border-radius: 8px; padding: 40px; text-align: center; color: #999; }
+        .action-btns { display: flex; gap: 8px; }
+        .query-result { background: #fafafa; border-radius: 8px; padding: 16px; margin-top: 16px; max-height: 400px; overflow: auto; font-family: monospace; font-size: 12px; white-space: pre-wrap; }
     </style>
 </head>
 <body>
 
-<!-- Login -->
 <div id="loginPage" class="login-wrap">
     <div class="login-box">
         <h1><span>Auto</span>Ops</h1>
@@ -178,123 +136,62 @@
     </div>
 </div>
 
-<!-- Main -->
 <div id="mainPage" class="main">
-    <!-- Sidebar -->
     <div class="sidebar">
         <div class="sidebar-header"><h1>⚙️ AutoOps</h1></div>
-        
         <div class="sidebar-nav">
             <div class="menu-title">首页</div>
-            <div class="menu-item active" onclick="showPage('dashboard', this)">
-                <span class="icon">📊</span><span>仪表盘</span>
-            </div>
+            <div class="menu-item active" onclick="showPage('dashboard', this)"><span class="icon">📊</span><span>仪表盘</span></div>
             
             <div class="menu-title">主机管理</div>
-            <div class="menu-item" onclick="showPage('hosts', this)">
-                <span class="icon">🖥️</span><span>主机列表</span>
-            </div>
-            <div class="menu-item" onclick="showPage('host-groups', this)">
-                <span class="icon">📁</span><span>主机分组</span>
-            </div>
-            <div class="menu-item" onclick="showPage('terminal', this)">
-                <span class="icon">💻</span><span>Web终端</span>
-            </div>
+            <div class="menu-item" onclick="showPage('hosts', this)"><span class="icon">🖥️</span><span>主机列表</span></div>
+            <div class="menu-item" onclick="showPage('host-groups', this)"><span class="icon">📁</span><span>主机分组</span></div>
+            <div class="menu-item" onclick="showPage('terminal', this)"><span class="icon">💻</span><span>Web终端</span></div>
             
             <div class="menu-title">Kubernetes</div>
-            <div class="menu-item" onclick="showPage('k8s-nodes', this)">
-                <span class="icon">🖥️</span><span>节点</span>
-            </div>
-            <div class="menu-item" onclick="showPage('k8s-pods', this)">
-                <span class="icon">📦</span><span>Pod</span>
-            </div>
-            <div class="menu-item" onclick="showPage('k8s-deployments', this)">
-                <span class="icon">🚀</span><span>Deployment</span>
-            </div>
-            <div class="menu-item" onclick="showPage('k8s-services', this)">
-                <span class="icon">🌐</span><span>Service</span>
-            </div>
-            <div class="menu-item" onclick="showPage('k8s-ingresses', this)">
-                <span class="icon">🌍</span><span>Ingress</span>
-            </div>
-            <div class="menu-item" onclick="showPage('k8s-configmaps', this)">
-                <span class="icon">🔧</span><span>ConfigMap</span>
-            </div>
-            <div class="menu-item" onclick="showPage('k8s-secrets', this)">
-                <span class="icon">🔐</span><span>Secret</span>
-            </div>
+            <div class="menu-item" onclick="showPage('k8s-nodes', this)"><span class="icon">🖥️</span><span>节点</span></div>
+            <div class="menu-item" onclick="showPage('k8s-pods', this)"><span class="icon">📦</span><span>Pod</span></div>
+            <div class="menu-item" onclick="showPage('k8s-deployments', this)"><span class="icon">🚀</span><span>Deployment</span></div>
+            <div class="menu-item" onclick="showPage('k8s-services', this)"><span class="icon">🌐</span><span>Service</span></div>
+            <div class="menu-item" onclick="showPage('k8s-ingresses', this)"><span class="icon">🌍</span><span>Ingress</span></div>
+            <div class="menu-item" onclick="showPage('k8s-configmaps', this)"><span class="icon">🔧</span><span>ConfigMap</span></div>
+            <div class="menu-item" onclick="showPage('k8s-secrets', this)"><span class="icon">🔐</span><span>Secret</span></div>
             
             <div class="menu-title">数据库</div>
-            <div class="menu-item" onclick="showPage('db-mysql', this)">
-                <span class="icon">🗄️</span><span>MySQL</span>
-            </div>
-            <div class="menu-item" onclick="showPage('db-redis', this)">
-                <span class="icon">📨</span><span>Redis</span>
-            </div>
+            <div class="menu-item" onclick="showPage('db-mysql', this)"><span class="icon">🗄️</span><span>MySQL</span></div>
+            <div class="menu-item" onclick="showPage('db-redis', this)"><span class="icon">📨</span><span>Redis</span></div>
             
             <div class="menu-title">监控中心</div>
-            <div class="menu-item" onclick="showPage('monitor-host', this)">
-                <span class="icon">📈</span><span>主机监控</span>
-            </div>
-            <div class="menu-item" onclick="showPage('monitor-k8s', this)">
-                <span class="icon">📊</span><span>K8s监控</span>
-            </div>
-            <div class="menu-item" onclick="showPage('monitor-alerts', this)">
-                <span class="icon">🔔</span><span>告警记录</span>
-            </div>
+            <div class="menu-item" onclick="showPage('monitor-host', this)"><span class="icon">📈</span><span>主机监控</span></div>
+            <div class="menu-item" onclick="showPage('monitor-k8s', this)"><span class="icon">📊</span><span>K8s监控</span></div>
+            <div class="menu-item" onclick="showPage('monitor-alerts', this)"><span class="icon">🔔</span><span>告警记录</span></div>
             
             <div class="menu-title">作业平台</div>
-            <div class="menu-item" onclick="showPage('job-tasks', this)">
-                <span class="icon">📝</span><span>任务列表</span>
-            </div>
-            <div class="menu-item" onclick="showPage('job-history', this)">
-                <span class="icon">📜</span><span>执行记录</span>
-            </div>
-            <div class="menu-item" onclick="showPage('job-templates', this)">
-                <span class="icon">📋</span><span>任务模板</span>
-            </div>
+            <div class="menu-item" onclick="showPage('job-tasks', this)"><span class="icon">📝</span><span>任务列表</span></div>
+            <div class="menu-item" onclick="showPage('job-history', this)"><span class="icon">📜</span><span>执行记录</span></div>
             
             <div class="menu-title">配置中心</div>
-            <div class="menu-item" onclick="showPage('config-files', this)">
-                <span class="icon">📄</span><span>配置文件</span>
-            </div>
-            <div class="menu-item" onclick="showPage('config-history', this)">
-                <span class="icon">📜</span><span>配置变更</span>
-            </div>
+            <div class="menu-item" onclick="showPage('config-files', this)"><span class="icon">📄</span><span>配置文件</span></div>
             
             <div class="menu-title">系统管理</div>
-            <div class="menu-item" onclick="showPage('system-users', this)">
-                <span class="icon">👥</span><span>用户管理</span>
-            </div>
-            <div class="menu-item" onclick="showPage('system-settings', this)">
-                <span class="icon">⚙️</span><span>系统设置</span>
-            </div>
-            <div class="menu-item" onclick="showPage('system-logs', this)">
-                <span class="icon">📋</span><span>操作日志</span>
-            </div>
+            <div class="menu-item" onclick="showPage('system-users', this)"><span class="icon">👥</span><span>用户管理</span></div>
+            <div class="menu-item" onclick="showPage('system-logs', this)"><span class="icon">📋</span><span>操作日志</span></div>
         </div>
-        
         <div class="sidebar-footer">
             <div class="user-info">
                 <div class="avatar" id="userAvatar">A</div>
-                <div>
-                    <div id="userDisplay">admin (admin)</div>
-                    <div style="font-size:11px;color:rgba(255,255,255,0.4);" id="userRole">管理员</div>
-                </div>
+                <div><div id="userDisplay">admin (admin)</div><div style="font-size:11px;color:rgba(255,255,255,0.4);" id="userRole">管理员</div></div>
             </div>
             <button class="logout-btn" onclick="logout()">退出登录</button>
         </div>
     </div>
     
-    <!-- Content -->
     <div class="content">
         <div class="content-header">
             <h2 id="pageTitle">仪表盘</h2>
             <span class="breadcrumb">AutoOps / <span id="breadcrumb">仪表盘</span></span>
         </div>
         <div class="content-body">
-            
-            <!-- Dashboard -->
             <div id="page-dashboard" class="page active">
                 <div class="quick-stats">
                     <div class="quick-stat"><div class="value" id="statHosts">0</div><div class="label">🖥️ 主机</div></div>
@@ -302,314 +199,82 @@
                     <div class="quick-stat"><div class="value" id="statPods">0</div><div class="label">📦 Pods</div></div>
                     <div class="quick-stat"><div class="value" id="statServices">0</div><div class="label">🌐 Services</div></div>
                 </div>
-                
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                    <div class="card">
-                        <div class="card-header"><h3>📊 K8s 集群状态</h3></div>
-                        <div id="k8sStatusChart"><div class="chart-placeholder">加载中...</div></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header"><h3>🖥️ 主机状态</h3></div>
-                        <div id="hostStatusChart"><div class="chart-placeholder">加载中...</div></div>
-                    </div>
+                    <div class="card"><div class="card-header"><h3>📊 K8s 集群状态</h3></div><div id="k8sStatusChart"><div class="chart-placeholder">加载中...</div></div></div>
+                    <div class="card"><div class="card-header"><h3>🖥️ 主机状态</h3></div><div id="hostStatusChart"><div class="chart-placeholder">加载中...</div></div></div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-header"><h3>📦 最近Pod</h3></div>
-                    <div id="recentPods"></div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header"><h3>📝 最近任务</h3></div>
-                    <div id="recentJobs"></div>
-                </div>
+                <div class="card"><div class="card-header"><h3>📦 最近Pod</h3></div><div id="recentPods"></div></div>
             </div>
             
-            <!-- Hosts -->
             <div id="page-hosts" class="page">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>🖥️ 主机列表</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('host-add')">+ 添加主机</button>
-                            <button class="btn btn-default" onclick="loadHosts()">🔄 刷新</button>
-                        </div>
-                    </div>
-                    <div class="search-box">
-                        <input type="text" placeholder="搜索主机名称/IP..." id="hostSearch">
-                        <button class="btn btn-default" onclick="loadHosts()">搜索</button>
-                    </div>
+                    <div class="card-header"><h3>🖥️ 主机列表</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('host-add')">+ 添加主机</button><button class="btn btn-default" onclick="loadHosts()">🔄 刷新</button></div></div>
+                    <div class="search-box"><input type="text" placeholder="搜索主机名称/IP..." id="hostSearch"><button class="btn btn-default" onclick="loadHosts()">搜索</button></div>
                     <div id="hostsTable"></div>
                 </div>
             </div>
             
-            <!-- Host Groups -->
             <div id="page-host-groups" class="page">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>📁 主机分组</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('group-add')">+ 添加分组</button>
-                        </div>
-                    </div>
+                    <div class="card-header"><h3>📁 主机分组</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('group-add')">+ 添加分组</button></div></div>
                     <div id="hostGroupsTable"></div>
                 </div>
             </div>
             
-            <!-- Terminal -->
             <div id="page-terminal" class="page">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>💻 Web终端</h3>
-                        <div class="actions">
-                            <select id="terminalHost" style="padding:8px;border:1px solid #ddd;border-radius:6px;">
-                                <option value="">选择主机</option>
-                            </select>
-                            <button class="btn btn-default" onclick="connectTerminal()">连接</button>
-                        </div>
-                    </div>
-                    <div class="terminal-box" id="terminalBox">
-                        <div class="terminal-output" id="terminalOutput">欢迎使用Web终端...\n请选择主机连接</div>
-                    </div>
-                    <div style="margin-top:16px;display:flex;gap:12px;">
-                        <input type="text" id="terminalInput" class="form-input" placeholder="输入命令后按回车执行" style="flex:1;" onkeypress="if(event.key==='Enter')execTerminal()">
-                        <button class="btn btn-primary" onclick="execTerminal()">执行</button>
-                    </div>
+                    <div class="card-header"><h3>💻 Web终端</h3><div class="actions"><select id="terminalHost" style="padding:8px;border:1px solid #ddd;border-radius:6px;"><option value="">选择主机</option></select><button class="btn btn-primary" onclick="connectTerminal()">连接</button></div></div>
+                    <div class="terminal-box" id="terminalBox"><div class="terminal-output" id="terminalOutput">欢迎使用Web终端...\n请先选择主机连接</div></div>
+                    <div style="margin-top:16px;display:flex;gap:12px;"><input type="text" id="terminalInput" class="form-input" placeholder="输入命令后按回车执行" style="flex:1;" onkeypress="if(event.key==='Enter')execTerminal()"><button class="btn btn-primary" onclick="execTerminal()">执行</button></div>
                 </div>
             </div>
             
-            <!-- K8s Nodes -->
-            <div id="page-k8s-nodes" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🖥️ Kubernetes 节点</h3>
-                        <button class="btn btn-default" onclick="loadK8sNodes()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sNodesTable"></div>
-                </div>
-            </div>
+            <div id="page-k8s-nodes" class="page"><div class="card"><div class="card-header"><h3>🖥️ Kubernetes 节点</h3><button class="btn btn-default" onclick="loadK8sNodes()">🔄 刷新</button></div><div id="k8sNodesTable"></div></div></div>
+            <div id="page-k8s-pods" class="page"><div class="card"><div class="card-header"><h3>📦 Pod 列表</h3><button class="btn btn-default" onclick="loadK8sPods()">🔄 刷新</button></div><div id="k8sPodsTable"></div></div></div>
+            <div id="page-k8s-deployments" class="page"><div class="card"><div class="card-header"><h3>🚀 Deployment 列表</h3><button class="btn btn-default" onclick="loadK8sDeployments()">🔄 刷新</button></div><div id="k8sDeploymentsTable"></div></div></div>
+            <div id="page-k8s-services" class="page"><div class="card"><div class="card-header"><h3>🌐 Service 列表</h3><button class="btn btn-default" onclick="loadK8sServices()">🔄 刷新</button></div><div id="k8sServicesTable"></div></div></div>
+            <div id="page-k8s-ingresses" class="page"><div class="card"><div class="card-header"><h3>🌍 Ingress 列表</h3><button class="btn btn-default" onclick="loadK8sIngresses()">🔄 刷新</button></div><div id="k8sIngressesTable"></div></div></div>
+            <div id="page-k8s-configmaps" class="page"><div class="card"><div class="card-header"><h3>🔧 ConfigMap 列表</h3><button class="btn btn-default" onclick="loadK8sConfigmaps()">🔄 刷新</button></div><div id="k8sConfigmapsTable"></div></div></div>
+            <div id="page-k8s-secrets" class="page"><div class="card"><div class="card-header"><h3>🔐 Secret 列表</h3><button class="btn btn-default" onclick="loadK8sSecrets()">🔄 刷新</button></div><div id="k8sSecretsTable"></div></div></div>
             
-            <!-- K8s Pods -->
-            <div id="page-k8s-pods" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📦 Pod 列表</h3>
-                        <button class="btn btn-default" onclick="loadK8sPods()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sPodsTable"></div>
-                </div>
-            </div>
-            
-            <!-- K8s Deployments -->
-            <div id="page-k8s-deployments" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🚀 Deployment 列表</h3>
-                        <button class="btn btn-default" onclick="loadK8sDeployments()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sDeploymentsTable"></div>
-                </div>
-            </div>
-            
-            <!-- K8s Services -->
-            <div id="page-k8s-services" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🌐 Service 列表</h3>
-                        <button class="btn btn-default" onclick="loadK8sServices()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sServicesTable"></div>
-                </div>
-            </div>
-            
-            <!-- K8s Ingresses -->
-            <div id="page-k8s-ingresses" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🌍 Ingress 列表</h3>
-                        <button class="btn btn-default" onclick="loadK8sIngresses()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sIngressesTable"></div>
-                </div>
-            </div>
-            
-            <!-- K8s ConfigMaps -->
-            <div id="page-k8s-configmaps" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🔧 ConfigMap 列表</h3>
-                        <button class="btn btn-default" onclick="loadK8sConfigmaps()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sConfigmapsTable"></div>
-                </div>
-            </div>
-            
-            <!-- K8s Secrets -->
-            <div id="page-k8s-secrets" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🔐 Secret 列表</h3>
-                        <button class="btn btn-default" onclick="loadK8sSecrets()">🔄 刷新</button>
-                    </div>
-                    <div id="k8sSecretsTable"></div>
-                </div>
-            </div>
-            
-            <!-- MySQL -->
             <div id="page-db-mysql" class="page">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>🗄️ MySQL 连接</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('mysql-add')">+ 添加连接</button>
-                        </div>
-                    </div>
+                    <div class="card-header"><h3>🗄️ MySQL 连接</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('mysql-add')">+ 添加连接</button><button class="btn btn-default" onclick="loadMySQL()">🔄 刷新</button></div></div>
                     <div id="mysqlTable"></div>
+                </div>
+                <div class="card" id="mysqlQueryCard" style="display:none;">
+                    <div class="card-header"><h3>📝 SQL查询</h3></div>
+                    <div class="form-group"><textarea id="mysqlSql" class="form-input" placeholder="SELECT * FROM users LIMIT 10;" style="min-height:100px;"></textarea></div>
+                    <button class="btn btn-primary" onclick="execMySQLQuery()">执行查询</button>
+                    <div id="mysqlQueryResult" class="query-result" style="display:none;"></div>
                 </div>
             </div>
             
-            <!-- Redis -->
             <div id="page-db-redis" class="page">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>📨 Redis 连接</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('redis-add')">+ 添加连接</button>
-                        </div>
-                    </div>
+                    <div class="card-header"><h3>📨 Redis 连接</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('redis-add')">+ 添加连接</button><button class="btn btn-default" onclick="loadRedis()">🔄 刷新</button></div></div>
                     <div id="redisTable"></div>
                 </div>
             </div>
             
-            <!-- Monitor Host -->
-            <div id="page-monitor-host" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>📈 主机监控</h3></div>
-                    <div class="chart-placeholder">主机监控图表开发中...</div>
-                </div>
-            </div>
+            <div id="page-monitor-host" class="page"><div class="card"><div class="card-header"><h3>📈 主机监控</h3></div><div class="chart-placeholder">主机监控图表开发中...</div></div></div>
+            <div id="page-monitor-k8s" class="page"><div class="card"><div class="card-header"><h3>📊 K8s 监控</h3></div><div class="chart-placeholder">K8s监控图表开发中...</div></div></div>
+            <div id="page-monitor-alerts" class="page"><div class="card"><div class="card-header"><h3>🔔 告警记录</h3></div><div id="alertsTable"><div class="empty"><div class="icon">🔔</div><div>暂无告警</div></div></div></div></div>
             
-            <!-- Monitor K8s -->
-            <div id="page-monitor-k8s" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>📊 K8s 监控</h3></div>
-                    <div class="chart-placeholder">K8s监控图表开发中...</div>
-                </div>
-            </div>
+            <div id="page-job-tasks" class="page"><div class="card"><div class="card-header"><h3>📝 任务列表</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('job-add')">+ 创建任务</button></div></div><div id="jobTasksTable"><div class="empty"><div class="icon">📝</div><div>暂无任务</div></div></div></div></div>
+            <div id="page-job-history" class="page"><div class="card"><div class="card-header"><h3>📜 执行记录</h3></div><div id="jobHistoryTable"><div class="empty"><div class="icon">📜</div><div>暂无执行记录</div></div></div></div></div>
             
-            <!-- Alerts -->
-            <div id="page-monitor-alerts" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>🔔 告警记录</h3></div>
-                    <div id="alertsTable"></div>
-                </div>
-            </div>
+            <div id="page-config-files" class="page"><div class="card"><div class="card-header"><h3>📄 配置文件</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('config-add')">+ 上传配置</button></div></div><div id="configFilesTable"><div class="empty"><div class="icon">📄</div><div>暂无配置文件</div></div></div></div></div>
             
-            <!-- Job Tasks -->
-            <div id="page-job-tasks" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📝 任务列表</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('job-add')">+ 创建任务</button>
-                        </div>
-                    </div>
-                    <div id="jobTasksTable"></div>
-                </div>
-            </div>
-            
-            <!-- Job History -->
-            <div id="page-job-history" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>📜 执行记录</h3></div>
-                    <div id="jobHistoryTable"></div>
-                </div>
-            </div>
-            
-            <!-- Job Templates -->
-            <div id="page-job-templates" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📋 任务模板</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('template-add')">+ 添加模板</button>
-                        </div>
-                    </div>
-                    <div id="jobTemplatesTable"></div>
-                </div>
-            </div>
-            
-            <!-- Config Files -->
-            <div id="page-config-files" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📄 配置文件</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('config-add')">+ 上传配置</button>
-                        </div>
-                    </div>
-                    <div id="configFilesTable"></div>
-                </div>
-            </div>
-            
-            <!-- Config History -->
-            <div id="page-config-history" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>📜 配置变更记录</h3></div>
-                    <div id="configHistoryTable"></div>
-                </div>
-            </div>
-            
-            <!-- Users -->
-            <div id="page-system-users" class="page">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>👥 用户管理</h3>
-                        <div class="actions">
-                            <button class="btn btn-primary" onclick="showModal('user-add')">+ 添加用户</button>
-                        </div>
-                    </div>
-                    <div id="usersTable"></div>
-                </div>
-            </div>
-            
-            <!-- Settings -->
-            <div id="page-system-settings" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>⚙️ 系统设置</h3></div>
-                    <div class="form-group">
-                        <label>平台名称</label>
-                        <input type="text" class="form-input" value="AutoOps" id="settingPlatformName">
-                    </div>
-                    <div class="form-group">
-                        <label>时区</label>
-                        <select class="form-input" id="settingTimezone">
-                            <option value="Asia/Shanghai">Asia/Shanghai (GMT+8)</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-primary" onclick="saveSettings()">保存设置</button>
-                </div>
-            </div>
-            
-            <!-- System Logs -->
-            <div id="page-system-logs" class="page">
-                <div class="card">
-                    <div class="card-header"><h3>📋 操作日志</h3></div>
-                    <div id="systemLogsTable"></div>
-                </div>
-            </div>
-            
+            <div id="page-system-users" class="page"><div class="card"><div class="card-header"><h3>👥 用户管理</h3><div class="actions"><button class="btn btn-primary" onclick="showModal('user-add')">+ 添加用户</button></div></div><div id="usersTable"></div></div></div>
+            <div id="page-system-logs" class="page"><div class="card"><div class="card-header"><h3>📋 操作日志</h3><button class="btn btn-default" onclick="loadSystemLogs()">🔄 刷新</button></div><div id="systemLogsTable"></div></div></div>
         </div>
     </div>
 </div>
 
-<!-- Modal -->
 <div id="modal" class="modal-overlay" onclick="if(event.target===this)hideModal()">
     <div class="modal">
-        <div class="modal-header">
-            <h3 id="modalTitle">弹窗</h3>
-            <button class="modal-close" onclick="hideModal()">×</button>
-        </div>
+        <div class="modal-header"><h3 id="modalTitle">弹窗</h3><button class="modal-close" onclick="hideModal()">×</button></div>
         <div class="modal-body" id="modalBody"></div>
         <div class="modal-footer" id="modalFooter"></div>
     </div>
@@ -618,334 +283,142 @@
 <script>
 const API = '/api/v1';
 function $(id) { return document.getElementById(id); }
-
-// Captcha
 let currentCaptcha = '';
-function refreshCaptcha() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    currentCaptcha = '';
-    for(let i = 0; i < 4; i++) currentCaptcha += chars[Math.floor(Math.random() * chars.length)];
-    $('captchaImg').textContent = currentCaptcha;
-}
+function refreshCaptcha() { const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; currentCaptcha=''; for(let i=0;i<4;i++) currentCaptcha+=chars[Math.floor(Math.random()*chars.length)]; $('captchaImg').textContent=currentCaptcha; }
 refreshCaptcha();
 
-// Login
 function doLogin() {
-    const username = $('username').value.trim();
-    const password = $('password').value;
-    const captcha = $('captcha').value.trim().toUpperCase();
-    const btn = $('loginBtn');
-    const errorMsg = $('errorMsg');
-    
-    if (!username || !password) {
-        errorMsg.textContent = '请输入用户名和密码';
-        errorMsg.classList.add('show');
-        return;
-    }
-    if (captcha !== currentCaptcha) {
-        errorMsg.textContent = '验证码错误';
-        errorMsg.classList.add('show');
-        refreshCaptcha();
-        return;
-    }
-    
-    errorMsg.classList.remove('show');
-    btn.disabled = true;
-    btn.textContent = '登录中...';
-    
-    fetch(API + '/auth/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username, password})
+    const username=$('username').value.trim(), password=$('password').value, captcha=$('captcha').value.trim().toUpperCase(), btn=$('loginBtn'), errorMsg=$('errorMsg');
+    if(!username||!password){errorMsg.textContent='请输入用户名和密码';errorMsg.classList.add('show');return;}
+    if(captcha!==currentCaptcha){errorMsg.textContent='验证码错误';errorMsg.classList.add('show');refreshCaptcha();return;}
+    errorMsg.classList.remove('show');btn.disabled=true;btn.textContent='登录中...';
+    fetch(API+'/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,password})})
+    .then(r=>r.json())
+    .then(data=>{
+        if(data.token){localStorage.setItem('token',data.token);localStorage.setItem('username',data.username);localStorage.setItem('role',data.role);showMain(data);}
+        else{errorMsg.textContent='登录失败: '+(data.error||'未知错误');errorMsg.classList.add('show');btn.disabled=false;btn.textContent='登 录';refreshCaptcha();}
     })
-    .then(r => r.json())
-    .then(data => {
-        if (data.token) {
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('username', data.username);
-            localStorage.setItem('role', data.role);
-            showMain(data);
-        } else {
-            errorMsg.textContent = '登录失败: ' + (data.error || '未知错误');
-            errorMsg.classList.add('show');
-            btn.disabled = false;
-            btn.textContent = '登 录';
-            refreshCaptcha();
-        }
-    })
-    .catch(e => {
-        errorMsg.textContent = '网络错误: ' + e.message;
-        errorMsg.classList.add('show');
-        btn.disabled = false;
-        btn.textContent = '登 录';
-    });
+    .catch(e=>{errorMsg.textContent='网络错误: '+e.message;errorMsg.classList.add('show');btn.disabled=false;btn.textContent='登 录';});
+}
+document.addEventListener('keypress',e=>{if(e.key==='Enter'&&$('loginPage').style.display!=='none')doLogin();});
+
+function showMain(userData){$('loginPage').style.display='none';$('mainPage').classList.add('show');$('userDisplay').textContent=userData.username+' ('+userData.role+')';$('userAvatar').textContent=userData.username[0].toUpperCase();$('userRole').textContent=userData.role==='admin'?'管理员':userData.role;loadDashboard();}
+function logout(){localStorage.removeItem('token');localStorage.removeItem('username');localStorage.removeItem('role');location.reload();}
+
+const pageTitles={dashboard:'仪表盘',hosts:'主机列表','host-groups':'主机分组',terminal:'Web终端','k8s-nodes':'节点','k8s-pods':'Pod','k8s-deployments':'Deployment','k8s-services':'Service','k8s-ingresses':'Ingress','k8s-configmaps':'ConfigMap','k8s-secrets':'Secret','db-mysql':'MySQL','db-redis':'Redis','monitor-host':'主机监控','monitor-k8s':'K8s监控','monitor-alerts':'告警记录','job-tasks':'任务列表','job-history':'执行记录','config-files':'配置文件','system-users':'用户管理','system-logs':'操作日志'};
+
+function showPage(page,el){
+    document.querySelectorAll('.menu-item').forEach(item=>item.classList.remove('active'));
+    if(el)el.classList.add('active');
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    $('page-'+page).classList.add('active');
+    $('pageTitle').textContent=pageTitles[page]||page;
+    $('breadcrumb').textContent=pageTitles[page]||page;
+    if(page==='dashboard')loadDashboard();
+    else if(page==='hosts')loadHosts();
+    else if(page==='host-groups')loadHostGroups();
+    else if(page==='terminal')loadTerminal();
+    else if(page==='k8s-nodes')loadK8sNodes();
+    else if(page==='k8s-pods')loadK8sPods();
+    else if(page==='k8s-deployments')loadK8sDeployments();
+    else if(page==='k8s-services')loadK8sServices();
+    else if(page==='k8s-ingresses')loadK8sIngresses();
+    else if(page==='k8s-configmaps')loadK8sConfigmaps();
+    else if(page==='k8s-secrets')loadK8sSecrets();
+    else if(page==='db-mysql')loadMySQL();
+    else if(page==='db-redis')loadRedis();
+    else if(page==='monitor-alerts')loadAlerts();
+    else if(page==='job-tasks')loadJobTasks();
+    else if(page==='job-history')loadJobHistory();
+    else if(page==='config-files')loadConfigFiles();
+    else if(page==='system-users')loadUsers();
+    else if(page==='system-logs')loadSystemLogs();
 }
 
-document.addEventListener('keypress', e => {
-    if (e.key === 'Enter' && $('loginPage').style.display !== 'none') doLogin();
-});
-
-// Main
-function showMain(userData) {
-    $('loginPage').style.display = 'none';
-    $('mainPage').classList.add('show');
-    $('userDisplay').textContent = userData.username + ' (' + userData.role + ')';
-    $('userAvatar').textContent = userData.username[0].toUpperCase();
-    $('userRole').textContent = userData.role === 'admin' ? '管理员' : userData.role;
-    loadDashboard();
+function loadDashboard(){
+    Promise.all([fetch(API+'/pods').then(r=>r.ok?r.json():[]),fetch(API+'/nodes').then(r=>r.ok?r.json():[]),fetch(API+'/services').then(r=>r.ok?r.json():[]),fetch(API+'/hosts').then(r=>r.ok?r.json():[])])
+    .then(([pods,nodes,services,hosts])=>{
+        const running=pods.filter(p=>p.status&&p.status.phase==='Running').length;
+        const pending=pods.filter(p=>p.status&&p.status.phase==='Pending').length;
+        const failed=pods.filter(p=>p.status&&p.status.phase==='Failed').length;
+        $('statPods').textContent=pods.length;$('statK8sNodes').textContent=nodes.length;$('statServices').textContent=services.length;$('statHosts').textContent=hosts.length||0;
+        $('k8sStatusChart').innerHTML='<table class="table"><tr><td>✅ Running</td><td style="color:#52c41a;font-weight:600;">'+running+'</td></tr><tr><td>⏳ Pending</td><td style="color:#fa8c16;font-weight:600;">'+pending+'</td></tr><tr><td>❌ Failed</td><td style="color:#f5222d;font-weight:600;">'+failed+'</td></tr></table>';
+        const onlineHosts=hosts.filter?hosts.filter(h=>h.status==='online').length:0;
+        $('hostStatusChart').innerHTML='<table class="table"><tr><td>🟢 在线</td><td style="color:#52c41a;font-weight:600;">'+(onlineHosts||0)+'</td></tr><tr><td>🔴 离线</td><td style="color:#f5222d;font-weight:600;">'+(hosts.length-(onlineHosts||0))+'</td></tr></table>';
+        $('recentPods').innerHTML=pods.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th></tr></thead><tbody>'+pods.slice(0,10).map(p=>'<tr><td>'+p.metadata.name+'</td><td>'+p.metadata.namespace+'</td><td><span class="status '+p.status.phase.toLowerCase()+'">'+p.status.phase+'</span></td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">📦</div><div>暂无数据</div></div>';
+    }).catch(e=>{});
 }
 
-function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('role');
-    location.reload();
+// Host functions
+function loadHosts(){
+    fetch(API+'/hosts').then(r=>r.json()).then(hosts=>{
+        $('statHosts').textContent=hosts.length||0;
+        $('hostsTable').innerHTML=hosts&&hosts.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>IP</th><th>端口</th><th>分组</th><th>状态</th><th>操作</th></tr></thead><tbody>'+hosts.map(h=>'<tr><td>'+h.name+'</td><td>'+h.ip+'</td><td>'+h.port+'</td><td>'+(h.group_name||'-')+'</td><td><span class="status '+(h.status==='online'?'running':'failed')+'">'+h.status+'</span></td><td><div class="action-btns"><button class="btn btn-default btn-sm" onclick="pingHost('+h.id+')">ping</button><button class="btn btn-danger btn-sm" onclick="deleteHost('+h.id+')">删除</button></div></td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🖥️</div><div>暂无主机<br><button class="btn btn-primary" onclick="showModal(\'host-add\')" style="margin-top:16px;">添加主机</button></div></div>';
+        // Update terminal host dropdown
+        let opts='<option value="">选择主机</option>';
+        hosts.forEach(h=>opts+='<option value="'+h.id+'">'+h.name+' ('+h.ip+')</option>');
+        $('terminalHost').innerHTML=opts;
+    }).catch(e=>{$('hostsTable').innerHTML='<div class="empty">加载失败</div>';});
 }
+function loadHostGroups(){fetch(API+'/host-groups').then(r=>r.json()).then(groups=>{$('hostGroupsTable').innerHTML=groups&&groups.length?'<div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>名称</th><th>描述</th><th>主机数</th><th>操作</th></tr></thead><tbody>'+groups.map(g=>'<tr><td>'+g.id+'</td><td>'+g.name+'</td><td>'+(g.desc||'')+'</td><td>'+g.count+'</td><td><button class="btn btn-danger btn-sm" onclick="deleteHostGroup('+g.id+')">删除</button></td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">📁</div><div>暂无分组</div></div>';}).catch(e=>{$('hostGroupsTable').innerHTML='<div class="empty">加载失败</div>';});}
+function pingHost(id){fetch(API+'/hosts/'+id+'/ping').then(r=>r.json()).then(data=>{alert(id+': '+data.status);loadHosts();}).catch(e=>alert('Ping失败'));}
+function deleteHost(id){if(confirm('确定删除?')){fetch(API+'/hosts/'+id,{method:'DELETE'}).then(()=>loadHosts());}}
+function deleteHostGroup(id){if(confirm('确定删除?')){fetch(API+'/host-groups/'+id,{method:'DELETE'}).then(()=>loadHostGroups());}}
 
-// Page titles
-const pageTitles = {
-    dashboard: '仪表盘', hosts: '主机列表', 'host-groups': '主机分组', terminal: 'Web终端',
-    'k8s-nodes': '节点', 'k8s-pods': 'Pod', 'k8s-deployments': 'Deployment', 'k8s-services': 'Service',
-    'k8s-ingresses': 'Ingress', 'k8s-configmaps': 'ConfigMap', 'k8s-secrets': 'Secret',
-    'db-mysql': 'MySQL', 'db-redis': 'Redis',
-    'monitor-host': '主机监控', 'monitor-k8s': 'K8s监控', 'monitor-alerts': '告警记录',
-    'job-tasks': '任务列表', 'job-history': '执行记录', 'job-templates': '任务模板',
-    'config-files': '配置文件', 'config-history': '配置变更',
-    'system-users': '用户管理', 'system-settings': '系统设置', 'system-logs': '操作日志'
-};
-
-function showPage(page, el) {
-    document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
-    if (el) el.classList.add('active');
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    $('page-' + page).classList.add('active');
-    $('pageTitle').textContent = pageTitles[page] || page;
-    $('breadcrumb').textContent = pageTitles[page] || page;
-    
-    if (page === 'dashboard') loadDashboard();
-    else if (page === 'hosts') loadHosts();
-    else if (page === 'host-groups') loadHostGroups();
-    else if (page === 'terminal') loadTerminal();
-    else if (page === 'k8s-nodes') loadK8sNodes();
-    else if (page === 'k8s-pods') loadK8sPods();
-    else if (page === 'k8s-deployments') loadK8sDeployments();
-    else if (page === 'k8s-services') loadK8sServices();
-    else if (page === 'k8s-ingresses') loadK8sIngresses();
-    else if (page === 'k8s-configmaps') loadK8sConfigmaps();
-    else if (page === 'k8s-secrets') loadK8sSecrets();
-    else if (page === 'db-mysql') loadMySQL();
-    else if (page === 'db-redis') loadRedis();
-    else if (page === 'monitor-alerts') loadAlerts();
-    else if (page === 'job-tasks') loadJobTasks();
-    else if (page === 'job-history') loadJobHistory();
-    else if (page === 'job-templates') loadJobTemplates();
-    else if (page === 'config-files') loadConfigFiles();
-    else if (page === 'config-history') loadConfigHistory();
-    else if (page === 'system-users') loadUsers();
-    else if (page === 'system-logs') loadSystemLogs();
-}
-
-// Dashboard
-function loadDashboard() {
-    Promise.all([
-        fetch(API + '/pods').then(r => r.ok ? r.json() : []),
-        fetch(API + '/nodes').then(r => r.ok ? r.json() : []),
-        fetch(API + '/services').then(r => r.ok ? r.json() : []),
-        fetch(API + '/deployments').then(r => r.ok ? r.json() : [])
-    ])
-    .then(([pods, nodes, services, deployments]) => {
-        const running = pods.filter(p => p.status && p.status.phase === 'Running').length;
-        const pending = pods.filter(p => p.status && p.status.phase === 'Pending').length;
-        const failed = pods.filter(p => p.status && p.status.phase === 'Failed').length;
-        
-        $('statPods').textContent = pods.length;
-        $('statK8sNodes').textContent = nodes.length;
-        $('statServices').textContent = services.length;
-        
-        $('k8sStatusChart').innerHTML = `
-            <table class="table">
-                <tr><td>✅ Running</td><td style="color:#52c41a;font-weight:600;">${running}</td></tr>
-                <tr><td>⏳ Pending</td><td style="color:#fa8c16;font-weight:600;">${pending}</td></tr>
-                <tr><td>❌ Failed</td><td style="color:#f5222d;font-weight:600;">${failed}</td></tr>
-            </table>`;
-        
-        $('hostStatusChart').innerHTML = '<table class="table"><tr><td>🖥️ 主机</td><td><span class="status running">在线</span></td></tr></table>';
-        
-        $('recentPods').innerHTML = pods.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th></tr></thead><tbody>' + pods.slice(0, 10).map(p => '<tr><td>' + p.metadata.name + '</td><td>' + p.metadata.namespace + '</td><td><span class="status ' + p.status.phase.toLowerCase() + '">' + p.status.phase + '</span></td></tr>').join('') + '</tbody></table></div>' : '<div class="empty">暂无数据</div>';
-        
-        $('recentJobs').innerHTML = '<div class="empty">暂无执行记录</div>';
-    })
-    .catch(e => {});
-}
+function loadTerminal(){$('terminalOutput').innerHTML='欢迎使用Web终端\n请先选择主机连接';}
+function connectTerminal(){$('terminalOutput').innerHTML='正在连接主机...\n$ ';}
+function execTerminal(){const cmd=$('terminalInput').value;if(!cmd)return;$('terminalOutput').innerHTML+='\n$ '+cmd+'\n';$('terminalInput').value='';const hostId=$('terminalHost').value;if(!hostId){$('terminalOutput').innerHTML+='请先选择主机\n$ ';return;}fetch(API+'/hosts/ssh',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({host_id:parseInt(hostId),command:cmd})}).then(r=>r.json()).then(d=>{$('terminalOutput').innerHTML+=(d.output||d.error||'执行完成')+'\n$ ';}).catch(e=>{$('terminalOutput').innerHTML+='Error: '+e.message+'\n$ ';});}
 
 // K8s functions
-function loadK8sNodes() {
-    fetch(API + '/nodes').then(r => r.json()).then(nodes => {
-        $('k8sNodesTable').innerHTML = nodes.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>状态</th><th>角色</th><th>版本</th><th>CPU</th><th>内存</th></tr></thead><tbody>' + nodes.map(n => '<tr><td>' + n.metadata.name + '</td><td><span class="status ' + (n.status.conditions.find(c=>c.type==='Ready'&&c.status==='True')?'running':'failed') + '">' + (n.status.conditions.find(c=>c.type==='Ready')?'Ready':'NotReady') + '</span></td><td>' + (n.metadata.labels['node-role.kubernetes.io/control-plane']?'control-plane':'worker') + '</td><td>' + n.status.nodeInfo.kubeletVersion + '</td><td>' + n.status.capacity.cpu + '</td><td>' + Math.round(parseInt(n.status.capacity.memory)/1024/1024/1024) + 'Gi</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">🖥️</div><div>暂无节点数据</div></div>';
-    }).catch(e => { $('k8sNodesTable').innerHTML = '<div class="empty">加载失败</div>'; });
+function loadK8sNodes(){fetch(API+'/nodes').then(r=>r.json()).then(nodes=>{$('k8sNodesTable').innerHTML=nodes&&nodes.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>状态</th><th>角色</th><th>版本</th><th>CPU</th><th>内存</th></tr></thead><tbody>'+nodes.map(n=>'<tr><td>'+n.metadata.name+'</td><td><span class="status '+(n.status.conditions.find(c=>c.type==="Ready"&&c.status==="True")?"running":"failed")+'">'+(n.status.conditions.find(c=>c.type==="Ready")?"Ready":"NotReady")+'</span></td><td>'+(n.metadata.labels["node-role.kubernetes.io/control-plane"]?"control-plane":"worker")+'</td><td>'+n.status.nodeInfo.kubeletVersion+'</td><td>'+n.status.capacity.cpu+'</td><td>'+Math.round(parseInt(n.status.capacity.memory)/1024/1024/1024)+'Gi</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🖥️</div><div>暂无节点</div></div>';}).catch(e=>{$('k8sNodesTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadK8sPods(){fetch(API+'/pods').then(r=>r.json()).then(pods=>{$('k8sPodsTable').innerHTML=pods&&pods.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead><tbody>'+pods.map(p=>'<tr><td>'+p.metadata.name+'</td><td>'+p.metadata.namespace+'</td><td><span class="status '+p.status.phase.toLowerCase()+'">'+p.status.phase+'</span></td><td>'+(p.spec.nodeName||"-")+'</td><td>'+new Date(p.metadata.creationTimestamp).toLocaleString()+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">📦</div><div>暂无Pods</div></div>';}).catch(e=>{$('k8sPodsTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadK8sDeployments(){fetch(API+'/deployments').then(r=>r.json()).then(deps=>{$('k8sDeploymentsTable').innerHTML=deps&&deps.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>Available</th></tr></thead><tbody>'+deps.map(d=>'<tr><td>'+d.metadata.name+'</td><td>'+d.metadata.namespace+'</td><td><span class="status '+((d.status.readyReplicas||0)===d.spec.replicas?"running":"pending")+'">'+(d.status.readyReplicas||0)+'/'+(d.spec.replicas||0)+'</span></td><td>'+(d.status.availableReplicas||0)+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🚀</div><div>暂无Deployments</div></div>';}).catch(e=>{$('k8sDeploymentsTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadK8sServices(){fetch(API+'/services').then(r=>r.json()).then(svcs=>{$('k8sServicesTable').innerHTML=svcs&&svcs.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>ClusterIP</th><th>端口</th></tr></thead><tbody>'+svcs.map(s=>'<tr><td>'+s.metadata.name+'</td><td>'+s.metadata.namespace+'</td><td>'+s.spec.type+'</td><td>'+(s.spec.clusterIP||"-")+'</td><td>'+s.spec.ports.map(p=>p.port).join(", ")+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🌐</div><div>暂无Services</div></div>';}).catch(e=>{$('k8sServicesTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadK8sIngresses(){fetch(API+'/ingresses').then(r=>r.json()).then(ings=>{$('k8sIngressesTable').innerHTML=ings&&ings.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>主机</th></tr></thead><tbody>'+ings.map(i=>'<tr><td>'+i.metadata.name+'</td><td>'+i.metadata.namespace+'</td><td>'+(i.spec.rules?i.spec.rules.map(r=>r.host).join(", "):"-")+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🌍</div><div>暂无Ingresses</div></div>';}).catch(e=>{$('k8sIngressesTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadK8sConfigmaps(){fetch(API+'/configmaps').then(r=>r.json()).then(cms=>{$('k8sConfigmapsTable').innerHTML=cms&&cms.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>键数量</th></tr></thead><tbody>'+cms.map(c=>'<tr><td>'+c.metadata.name+'</td><td>'+c.metadata.namespace+'</td><td>'+Object.keys(c.data||{}).length+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🔧</div><div>暂无ConfigMaps</div></div>';}).catch(e=>{$('k8sConfigmapsTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadK8sSecrets(){fetch(API+'/secrets').then(r=>r.json()).then(secrets=>{$('k8sSecretsTable').innerHTML=secrets&&secrets.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>类型</th></tr></thead><tbody>'+secrets.map(s=>'<tr><td>'+s.metadata.name+'</td><td>'+s.metadata.namespace+'</td><td>'+s.type+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🔐</div><div>暂无Secrets</div></div>';}).catch(e=>{$('k8sSecretsTable').innerHTML='<div class="empty">加载失败</div>';});}
+
+// DB functions
+function loadMySQL(){fetch(API+'/mysql').then(r=>r.json()).then(mysql=>{$('mysqlTable').innerHTML=mysql&&mysql.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>主机</th><th>端口</th><th>数据库</th><th>状态</th><th>操作</th></tr></thead><tbody>'+mysql.map(m=>'<tr><td>'+m.name+'</td><td>'+m.host+'</td><td>'+m.port+'</td><td>'+(m.database||"-")+'</td><td><span class="status '+(m.status==="online"?"running":"failed")+'">'+m.status+'</span></td><td><div class="action-btns"><button class="btn btn-default btn-sm" onclick="testMySQL('+m.id+')">测试</button><button class="btn btn-primary btn-sm" onclick="showMySQLQuery('+m.id+')">查询</button><button class="btn btn-danger btn-sm" onclick="deleteMySQL('+m.id+')">删除</button></div></td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">🗄️</div><div>暂无MySQL连接<br><button class="btn btn-primary" onclick="showModal(\'mysql-add\')" style="margin-top:16px;">添加连接</button></div></div>';}).catch(e=>{$('mysqlTable').innerHTML='<div class="empty">加载失败</div>';});}
+let currentMySQLId=null;
+function showMySQLQuery(id){currentMySQLId=id;$('mysqlQueryCard').style.display='block';}
+function execMySQLQuery(){if(!currentMySQLId)return;const sql=$('mysqlSql').value;if(!sql.trim()){alert('请输入SQL');return;}fetch(API+'/mysql/'+currentMySQLId+'/query',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sql})}).then(r=>r.json()).then(d=>{if(d.error){alert('Error: '+d.error);}else{const result=$('mysqlQueryResult');result.style.display='block';let html='<table class="table"><thead><tr>';d.columns.forEach(col=>html+='<th>'+col+'</th>');html+='</tr></thead><tbody>';d.rows.forEach(row=>{if(typeof row==='object'){html+='<tr>';d.columns.forEach(col=>html+='<td>'+(row[col]||'')+'</td>');html+='</tr>';}});html+='</tbody></table><div style="margin-top:8px;color:#999;">共 '+d.rows.length+' 行</div>';result.innerHTML=html;}}).catch(e=>alert('Query failed: '+e.message));}
+function testMySQL(id){fetch(API+'/mysql/'+id+'/test').then(r=>r.json()).then(d=>alert(id+': '+d.status+' - '+d.message));loadMySQL();}
+function deleteMySQL(id){if(confirm('确定删除?')){fetch(API+'/mysql/'+id,{method:'DELETE'}).then(()=>loadMySQL());}}
+function loadRedis(){fetch(API+'/redis').then(r=>r.json()).then(redis=>{$('redisTable').innerHTML=redis&&redis.length?'<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>主机</th><th>端口</th><th>状态</th><th>操作</th></tr></thead><tbody>'+redis.map(r=>'<tr><td>'+r.name+'</td><td>'+r.host+'</td><td>'+r.port+'</td><td><span class="status '+(r.status==="online"?"running":"failed")+'">'+r.status+'</span></td><td><div class="action-btns"><button class="btn btn-default btn-sm" onclick="testRedis('+r.id+')">测试</button><button class="btn btn-danger btn-sm" onclick="deleteRedis('+r.id+')">删除</button></div></td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">📨</div><div>暂无Redis连接<br><button class="btn btn-primary" onclick="showModal(\'redis-add\')" style="margin-top:16px;">添加连接</button></div></div>';}).catch(e=>{$('redisTable').innerHTML='<div class="empty">加载失败</div>';});}
+function testRedis(id){fetch(API+'/redis/'+id+'/test').then(r=>r.json()).then(d=>alert(id+': '+d.status+' - '+d.message));loadRedis();}
+function deleteRedis(id){if(confirm('确定删除?')){fetch(API+'/redis/'+id,{method:'DELETE'}).then(()=>loadRedis());}}
+
+function loadAlerts(){$('alertsTable').innerHTML='<div class="empty"><div class="icon">🔔</div><div>暂无告警</div></div>';}
+function loadJobTasks(){$('jobTasksTable').innerHTML='<div class="empty"><div class="icon">📝</div><div>暂无任务</div></div>';}
+function loadJobHistory(){$('jobHistoryTable').innerHTML='<div class="empty"><div class="icon">📜</div><div>暂无执行记录</div></div>';}
+function loadConfigFiles(){$('configFilesTable').innerHTML='<div class="empty"><div class="icon">📄</div><div>暂无配置文件</div></div>';}
+function loadUsers(){fetch(API+'/users').then(r=>r.json()).then(users=>{$('usersTable').innerHTML=users&&users.length?'<div class="table-wrap"><table class="table"><thead><tr><th>用户名</th><th>角色</th><th>创建时间</th></tr></thead><tbody>'+users.map(u=>'<tr><td>'+u.username+'</td><td><span class="status '+(u.role==="admin"?"success":"offline")+'">'+u.role+'</span></td><td>'+(u.created_at||"-")+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">👥</div><div>暂无用户</div></div>';}).catch(e=>{$('usersTable').innerHTML='<div class="empty">加载失败</div>';});}
+function loadSystemLogs(){fetch(API+'/logs').then(r=>r.json()).then(logs=>{$('systemLogsTable').innerHTML=logs&&logs.length?'<div class="table-wrap"><table class="table"><thead><tr><th>时间</th><th>用户</th><th>操作</th><th>详情</th></tr></thead><tbody>'+logs.map(l=>'<tr><td>'+l.created_at+'</td><td>'+l.user+'</td><td>'+l.action+'</td><td>'+(l.details||"")+'</td></tr>').join('')+'</tbody></table></div>':'<div class="empty"><div class="icon">📋</div><div>暂无日志</div></div>';}).catch(e=>{$('systemLogsTable').innerHTML='<div class="empty">加载失败</div>';});}
+
+function showModal(type){
+    let title='弹窗',body='',footer='<button class="btn btn-default" onclick="hideModal()">取消</button><button class="btn btn-primary" onclick="doModalSubmit(\''+type+'\')">确定</button>';
+    if(type==='host-add'){title='添加主机';body='<div class="form-group"><label>主机名称</label><input type="text" id="m_name" class="form-input" placeholder="web-01"></div><div class="form-row"><div class="form-group"><label>IP地址</label><input type="text" id="m_ip" class="form-input" placeholder="192.168.1.101"></div><div class="form-group"><label>端口</label><input type="text" id="m_port" class="form-input" value="22"></div></div><div class="form-row"><div class="form-group"><label>用户名</label><input type="text" id="m_username" class="form-input" placeholder="root"></div><div class="form-group"><label>密码</label><input type="password" id="m_password" class="form-input" placeholder="密码"></div></div><div class="form-group"><label>主机分组</label><select id="m_group" class="form-input"><option value="">无</option></select></div>';fetch(API+'/host-groups').then(r=>r.json()).then(gs=>{gs.forEach(g=>{$('#m_group').innerHTML+='<option value="'+g.id+'">'+g.name+'</option>';});});}
+    else if(type==='group-add'){title='添加分组';body='<div class="form-group"><label>分组名称</label><input type="text" id="m_name" class="form-input" placeholder="Web服务器"></div><div class="form-group"><label>描述</label><textarea id="m_desc" class="form-input" placeholder="分组描述..."></textarea></div>';}
+    else if(type==='mysql-add'){title='添加MySQL连接';body='<div class="form-group"><label>连接名称</label><input type="text" id="m_name" class="form-input" placeholder="生产库"></div><div class="form-row"><div class="form-group"><label>主机</label><input type="text" id="m_host" class="form-input" placeholder="192.168.1.50"></div><div class="form-group"><label>端口</label><input type="text" id="m_port" class="form-input" value="3306"></div></div><div class="form-group"><label>数据库</label><input type="text" id="m_database" class="form-input" placeholder="myapp"></div><div class="form-row"><div class="form-group"><label>用户名</label><input type="text" id="m_username" class="form-input" placeholder="root"></div><div class="form-group"><label>密码</label><input type="password" id="m_password" class="form-input" placeholder="密码"></div></div>';}
+    else if(type==='redis-add'){title='添加Redis连接';body='<div class="form-group"><label>连接名称</label><input type="text" id="m_name" class="form-input" placeholder="Redis缓存"></div><div class="form-row"><div class="form-group"><label>主机</label><input type="text" id="m_host" class="form-input" placeholder="192.168.1.52"></div><div class="form-group"><label>端口</label><input type="text" id="m_port" class="form-input" value="6379"></div></div><div class="form-group"><label>密码</label><input type="password" id="m_password" class="form-input" placeholder="（可选）"></div>';}
+    else if(type==='user-add'){title='添加用户';body='<div class="form-group"><label>用户名</label><input type="text" id="m_username" class="form-input" placeholder="newuser"></div><div class="form-group"><label>密码</label><input type="password" id="m_password" class="form-input" placeholder="密码"></div><div class="form-group"><label>角色</label><select id="m_role" class="form-input"><option value="viewer">查看者</option><option value="editor">编辑者</option><option value="admin">管理员</option></select></div>';}
+    else if(type==='job-add'){title='创建任务';body='<div class="form-group"><label>任务名称</label><input type="text" id="m_name" class="form-input" placeholder="批量部署"></div><div class="form-group"><label>执行命令</label><textarea id="m_cmd" class="form-input" placeholder="cd /opt && ./deploy.sh" style="min-height:100px;"></textarea></div>';}
+    else if(type==='config-add'){title='上传配置';body='<div class="form-group"><label>文件名称</label><input type="text" id="m_name" class="form-input" placeholder="nginx.conf"></div><div class="form-group"><label>内容</label><textarea id="m_content" class="form-input" placeholder="配置文件内容..." style="min-height:200px;"></textarea></div>';}
+    $('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modalFooter').innerHTML=footer;$('modal').classList.add('show');
+}
+function hideModal(){$('modal').classList.remove('show');}
+function doModalSubmit(type){
+    if(type==='host-add'){fetch(API+'/hosts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#m_name').value,ip:$('#m_ip').value,port:parseInt($('#m_port').value)||22,username:$('#m_username').value,password:$('#m_password').value,group_id:parseInt($('#m_group').value)||0})}).then(()=>{hideModal();loadHosts();});}
+    else if(type==='group-add'){fetch(API+'/host-groups',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#m_name').value,desc:$('#m_desc').value})}).then(()=>{hideModal();loadHostGroups();});}
+    else if(type==='mysql-add'){fetch(API+'/mysql',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#m_name').value,host:$('#m_host').value,port:parseInt($('#m_port').value)||3306,database:$('#m_database').value,username:$('#m_username').value,password:$('#m_password').value})}).then(()=>{hideModal();loadMySQL();});}
+    else if(type==='redis-add'){fetch(API+'/redis',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#m_name').value,host:$('#m_host').value,port:parseInt($('#m_port').value)||6379,password:$('#m_password').value})}).then(()=>{hideModal();loadRedis();});}
+    else if(type==='user-add'){fetch(API+'/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:$('#m_username').value,password:$('#m_password').value,role:$('#m_role').value})}).then(()=>{hideModal();loadUsers();});}
+    else{hideModal();}
 }
 
-function loadK8sPods() {
-    fetch(API + '/pods').then(r => r.json()).then(pods => {
-        $('k8sPodsTable').innerHTML = pods.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>状态</th><th>Node</th><th>创建时间</th></tr></thead><tbody>' + pods.map(p => '<tr><td>' + p.metadata.name + '</td><td>' + p.metadata.namespace + '</td><td><span class="status ' + p.status.phase.toLowerCase() + '">' + p.status.phase + '</span></td><td>' + (p.spec.nodeName||'-') + '</td><td>' + new Date(p.metadata.creationTimestamp).toLocaleString() + '</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">📦</div><div>暂无Pods</div></div>';
-    }).catch(e => { $('k8sPodsTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-function loadK8sDeployments() {
-    fetch(API + '/deployments').then(r => r.json()).then(deps => {
-        $('k8sDeploymentsTable').innerHTML = deps.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>Ready</th><th>Available</th></tr></thead><tbody>' + deps.map(d => '<tr><td>' + d.metadata.name + '</td><td>' + d.metadata.namespace + '</td><td><span class="status ' + ((d.status.readyReplicas||0) === d.spec.replicas?'running':'pending') + '">' + (d.status.readyReplicas||0) + '/' + (d.spec.replicas||0) + '</span></td><td>' + (d.status.availableReplicas||0) + '</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">🚀</div><div>暂无Deployments</div></div>';
-    }).catch(e => { $('k8sDeploymentsTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-function loadK8sServices() {
-    fetch(API + '/services').then(r => r.json()).then(svcs => {
-        $('k8sServicesTable').innerHTML = svcs.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>类型</th><th>ClusterIP</th><th>端口</th></tr></thead><tbody>' + svcs.map(s => '<tr><td>' + s.metadata.name + '</td><td>' + s.metadata.namespace + '</td><td>' + s.spec.type + '</td><td>' + (s.spec.clusterIP||'-') + '</td><td>' + s.spec.ports.map(p=>p.port).join(', ') + '</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">🌐</div><div>暂无Services</div></div>';
-    }).catch(e => { $('k8sServicesTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-function loadK8sIngresses() {
-    fetch(API + '/ingresses').then(r => r.json()).then(ings => {
-        $('k8sIngressesTable').innerHTML = ings.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>主机</th></tr></thead><tbody>' + ings.map(i => '<tr><td>' + i.metadata.name + '</td><td>' + i.metadata.namespace + '</td><td>' + (i.spec.rules?i.spec.rules.map(r=>r.host).join(','):'-') + '</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">🌍</div><div>暂无Ingresses</div></div>';
-    }).catch(e => { $('k8sIngressesTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-function loadK8sConfigmaps() {
-    fetch(API + '/configmaps').then(r => r.json()).then(cms => {
-        $('k8sConfigmapsTable').innerHTML = cms.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>键数量</th></tr></thead><tbody>' + cms.map(c => '<tr><td>' + c.metadata.name + '</td><td>' + c.metadata.namespace + '</td><td>' + Object.keys(c.data||{}).length + '</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">🔧</div><div>暂无ConfigMaps</div></div>';
-    }).catch(e => { $('k8sConfigmapsTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-function loadK8sSecrets() {
-    fetch(API + '/secrets').then(r => r.json()).then(secrets => {
-        $('k8sSecretsTable').innerHTML = secrets.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>名称</th><th>命名空间</th><th>类型</th></tr></thead><tbody>' + secrets.map(s => '<tr><td>' + s.metadata.name + '</td><td>' + s.metadata.namespace + '</td><td>' + s.type + '</td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">🔐</div><div>暂无Secrets</div></div>';
-    }).catch(e => { $('k8sSecretsTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-// Placeholder functions
-function loadHosts() {
-    $('hostsTable').innerHTML = '<div class="empty"><div class="icon">🖥️</div><div>暂无主机<br><button class="btn btn-primary" onclick="showModal(\'host-add\')" style="margin-top:16px;">添加主机</button></div></div>';
-    $('statHosts').textContent = '0';
-}
-
-function loadHostGroups() {
-    $('hostGroupsTable').innerHTML = '<div class="empty"><div class="icon">📁</div><div>暂无主机分组</div></div>';
-}
-
-function loadTerminal() {
-    $('terminalOutput').innerHTML = '欢迎使用Web终端\n请选择主机连接';
-}
-
-function loadMySQL() {
-    $('mysqlTable').innerHTML = '<div class="empty"><div class="icon">🗄️</div><div>暂无MySQL连接<br><button class="btn btn-primary" onclick="showModal(\'mysql-add\')" style="margin-top:16px;">添加连接</button></div></div>';
-}
-
-function loadRedis() {
-    $('redisTable').innerHTML = '<div class="empty"><div class="icon">📨</div><div>暂无Redis连接<br><button class="btn btn-primary" onclick="showModal(\'redis-add\')" style="margin-top:16px;">添加连接</button></div></div>';
-}
-
-function loadAlerts() {
-    $('alertsTable').innerHTML = '<div class="empty"><div class="icon">🔔</div><div>暂无告警记录</div></div>';
-}
-
-function loadJobTasks() {
-    $('jobTasksTable').innerHTML = '<div class="empty"><div class="icon">📝</div><div>暂无任务<br><button class="btn btn-primary" onclick="showModal(\'job-add\')" style="margin-top:16px;">创建任务</button></div></div>';
-}
-
-function loadJobHistory() {
-    $('jobHistoryTable').innerHTML = '<div class="empty"><div class="icon">📜</div><div>暂无执行记录</div></div>';
-}
-
-function loadJobTemplates() {
-    $('jobTemplatesTable').innerHTML = '<div class="empty"><div class="icon">📋</div><div>暂无任务模板</div></div>';
-}
-
-function loadConfigFiles() {
-    $('configFilesTable').innerHTML = '<div class="empty"><div class="icon">📄</div><div>暂无配置文件</div></div>';
-}
-
-function loadConfigHistory() {
-    $('configHistoryTable').innerHTML = '<div class="empty"><div class="icon">📜</div><div>暂无配置变更记录</div></div>';
-}
-
-function loadUsers() {
-    fetch(API + '/users').then(r => r.json()).then(users => {
-        $('usersTable').innerHTML = users && users.length ? '<div class="table-wrap"><table class="table"><thead><tr><th>用户名</th><th>角色</th><th>创建时间</th><th>操作</th></tr></thead><tbody>' + users.map(u => '<tr><td>' + u.username + '</td><td><span class="status ' + (u.role==='admin'?'success':'offline') + '">' + u.role + '</span></td><td>' + (u.created_at||'-') + '</td><td><button class="btn btn-danger btn-sm">删除</button></td></tr>').join('') + '</tbody></table></div>' : '<div class="empty"><div class="icon">👥</div><div>暂无用户</div></div>';
-    }).catch(e => { $('usersTable').innerHTML = '<div class="empty">加载失败</div>'; });
-}
-
-function loadSystemLogs() {
-    $('systemLogsTable').innerHTML = '<div class="empty"><div class="icon">📋</div><div>暂无操作日志</div></div>';
-}
-
-function saveSettings() {
-    alert('设置已保存');
-}
-
-// Modal
-function showModal(type) {
-    let title = '弹窗';
-    let body = '';
-    let footer = '<button class="btn btn-default" onclick="hideModal()">取消</button><button class="btn btn-primary">确定</button>';
-    
-    if (type === 'host-add') {
-        title = '添加主机';
-        body = '<div class="form-group"><label>主机名称</label><input type="text" class="form-input" placeholder="web-server-01"></div><div class="form-group"><label>IP地址</label><input type="text" class="form-input" placeholder="192.168.1.100"></div><div class="form-group"><label>SSH端口</label><input type="text" class="form-input" value="22"></div><div class="form-group"><label>用户名</label><input type="text" class="form-input" placeholder="root"></div><div class="form-group"><label>密码/密钥</label><input type="password" class="form-input" placeholder="输入密码或SSH密钥"></div>';
-    } else if (type === 'group-add') {
-        title = '添加分组';
-        body = '<div class="form-group"><label>分组名称</label><input type="text" class="form-input" placeholder="Web服务器"></div><div class="form-group"><label>描述</label><textarea class="form-input" placeholder="分组描述..."></textarea></div>';
-    } else if (type === 'mysql-add') {
-        title = '添加MySQL连接';
-        body = '<div class="form-group"><label>连接名称</label><input type="text" class="form-input" placeholder="生产库"></div><div class="form-row"><div class="form-group"><label>主机</label><input type="text" class="form-input" placeholder="192.168.1.50"></div><div class="form-group"><label>端口</label><input type="text" class="form-input" value="3306"></div></div><div class="form-group"><label>数据库</label><input type="text" class="form-input" placeholder="myapp"></div><div class="form-group"><label>用户名</label><input type="text" class="form-input" placeholder="root"></div><div class="form-group"><label>密码</label><input type="password" class="form-input" placeholder="••••••••"></div>';
-    } else if (type === 'redis-add') {
-        title = '添加Redis连接';
-        body = '<div class="form-group"><label>连接名称</label><input type="text" class="form-input" placeholder="缓存服务器"></div><div class="form-row"><div class="form-group"><label>主机</label><input type="text" class="form-input" placeholder="192.168.1.51"></div><div class="form-group"><label>端口</label><input type="text" class="form-input" value="6379"></div></div><div class="form-group"><label>密码</label><input type="password" class="form-input" placeholder="（可选）"></div>';
-    } else if (type === 'job-add') {
-        title = '创建任务';
-        body = '<div class="form-group"><label>任务名称</label><input type="text" class="form-input" placeholder="批量部署"></div><div class="form-group"><label>选择主机</label><select class="form-input"><option>全选</option><option>Web服务器组</option><option>DB服务器组</option></select></div><div class="form-group"><label>执行命令</label><textarea class="form-input" placeholder="cd /opt && ./deploy.sh"></textarea></div>';
-    } else if (type === 'template-add') {
-        title = '添加任务模板';
-        body = '<div class="form-group"><label>模板名称</label><input type="text" class="form-input" placeholder="批量重启服务"></div><div class="form-group"><label>模板命令</label><textarea class="form-input" placeholder="systemctl restart nginx"></textarea></div>';
-    } else if (type === 'config-add') {
-        title = '上传配置文件';
-        body = '<div class="form-group"><label>文件名称</label><input type="text" class="form-input" placeholder="nginx.conf"></div><div class="form-group"><label>配置文件</label><textarea class="form-input" placeholder="粘贴配置文件内容..." style="min-height:200px;"></textarea></div>';
-    } else if (type === 'user-add') {
-        title = '添加用户';
-        body = '<div class="form-group"><label>用户名</label><input type="text" class="form-input" placeholder="newuser"></div><div class="form-group"><label>密码</label><input type="password" class="form-input" placeholder="••••••••"></div><div class="form-group"><label>角色</label><select class="form-input"><option value="viewer">查看者</option><option value="editor">编辑者</option><option value="admin">管理员</option></select></div>';
-    }
-    
-    $('modalTitle').textContent = title;
-    $('modalBody').innerHTML = body;
-    $('modalFooter').innerHTML = footer;
-    $('modal').classList.add('show');
-}
-
-function hideModal() {
-    $('modal').classList.remove('show');
-}
-
-// Terminal
-function connectTerminal() {
-    $('terminalOutput').innerHTML = '正在连接...';
-    setTimeout(() => {
-        $('terminalOutput').innerHTML = '已连接到主机\n$ ';
-    }, 1000);
-}
-
-function execTerminal() {
-    const cmd = $('terminalInput').value;
-    if (!cmd) return;
-    $('terminalOutput').innerHTML += '\n$ ' + cmd + '\n';
-    $('terminalInput').value = '';
-    setTimeout(() => {
-        $('terminalOutput').innerHTML += 'bash: command not found\n$ ';
-    }, 500);
-}
-
-// Init
-const savedToken = localStorage.getItem('token');
-if (savedToken) {
-    showMain({username: localStorage.getItem('username'), role: localStorage.getItem('role')});
-}
+const savedToken=localStorage.getItem('token');
+if(savedToken){showMain({username:localStorage.getItem('username'),role:localStorage.getItem('role')});}
 </script>
 </body>
 </html>
