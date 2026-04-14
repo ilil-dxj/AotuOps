@@ -1,0 +1,21 @@
+# Binaries
+k8s-admin
+k8s-admin-old
+k8s-final
+*.exe
+*.dll
+*.so
+
+# Temporary files
+*.log
+nohup.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
